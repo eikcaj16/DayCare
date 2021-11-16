@@ -25,15 +25,6 @@ public class StudentController {
 	public LocalDate getRegistrationDate() {
 		return model.getRegistrationDate();
 	}
-
-	
-	public void setGpa(double gpa) {
-		model.setGpa(gpa);
-	}
-
-	public double getGpa() {
-		return model.getGpa();
-	}
 	
 	public void setStudentId(long studentId) {
 		model.setStudentId(studentId);

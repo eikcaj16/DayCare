@@ -27,14 +27,6 @@ abstract class AbstractPerson {
 
 	/**
 	 * 
-	 * @param id
-	 */
-	abstract void setId(long id);
-
-	abstract long getId();
-
-	/**
-	 * 
 	 * @param address
 	 */
 	abstract void setAddress(String address);

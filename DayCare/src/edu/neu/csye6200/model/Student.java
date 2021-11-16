@@ -6,7 +6,6 @@ public class Student extends Person {
 
 	private LocalDate immunizationDate;
 	private LocalDate registrationDate;
-	private double gpa;
 	private long studentId;
 
 	/**
@@ -33,17 +32,6 @@ public class Student extends Person {
 		return this.registrationDate;
 	}
 
-	/**
-	 * 
-	 * @param gpa
-	 */
-	public void setGpa(double gpa) {
-		this.gpa = gpa;
-	}
-
-	public double getGpa() {
-		return this.gpa;
-	}
 
 	/**
 	 * 

@@ -24,18 +24,6 @@ public class TeacherController {
 
 	/**
 	 * 
-	 * @param credits
-	 */
-	public void setCredits(int credits) {
-		model.setCredits(credits);
-	}
-
-	public int getCredits() {
-		return model.getCredits();
-	}
-
-	/**
-	 * 
 	 * @param emplpyeeId
 	 */
 	public void setEmployeeId(long emplpyeeId) {

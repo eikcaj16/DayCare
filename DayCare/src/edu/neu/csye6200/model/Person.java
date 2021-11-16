@@ -5,7 +5,6 @@ public class Person extends AbstractPerson {
 	private String firstName;
 	private String lastName;
 	private int age;
-	private long id;
 	private String address;
 	private long phoneNum;
 	private String parentName;
@@ -50,20 +49,6 @@ public class Person extends AbstractPerson {
 	@Override
 	public int getAge() {
 		return this.age;
-	}
-
-	/**
-	 * 
-	 * @param id
-	 */
-	@Override
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	@Override
-	public long getId() {
-		return this.id;
 	}
 
 	/**

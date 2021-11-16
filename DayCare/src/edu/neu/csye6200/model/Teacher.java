@@ -3,7 +3,6 @@ package edu.neu.csye6200.model;
 public class Teacher extends Person {
 
 	private double review;
-	private int credits;
 	private long employeeId;
 
 	/**
@@ -16,18 +15,6 @@ public class Teacher extends Person {
 
 	public double getReview() {
 		return this.review;
-	}
-
-	/**
-	 * 
-	 * @param credits
-	 */
-	public void setCredits(int credits) {
-		this.credits = credits;
-	}
-
-	public int getCredits() {
-		return this.credits;
 	}
 
 	/**
