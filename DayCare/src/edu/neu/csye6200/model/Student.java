@@ -1,3 +1,7 @@
+package edu.neu.csye6200.model;
+
+import edu.neu.csye6200.utils.LocalDate;
+
 public class Student extends Person {
 
 	private LocalDate immunizationDate;

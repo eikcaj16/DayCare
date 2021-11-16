@@ -1,22 +1,26 @@
-public class AbstractPerson {
+package edu.neu.csye6200.model;
 
-	private string firstName;
-	private string lastName;
+public class Person extends AbstractPerson {
+	
+	private String firstName;
+	private String lastName;
 	private int age;
 	private long id;
-	private string address;
+	private String address;
 	private long phoneNum;
-	private string parentName;
-
+	private String parentName;
+	
 	/**
 	 * 
 	 * @param firstName
 	 */
-	public void setFirstName(string firstName) {
+	@Override
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	public string getFirstName() {
+	@Override
+	public String getFirstName() {
 		return this.firstName;
 	}
 
@@ -24,11 +28,13 @@ public class AbstractPerson {
 	 * 
 	 * @param lastName
 	 */
-	public void setLastName(string lastName) {
+	@Override
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-	public string getLastName() {
+	@Override
+	public String getLastName() {
 		return this.lastName;
 	}
 
@@ -36,10 +42,12 @@ public class AbstractPerson {
 	 * 
 	 * @param age
 	 */
+	@Override
 	public void setAge(int age) {
 		this.age = age;
 	}
 
+	@Override
 	public int getAge() {
 		return this.age;
 	}
@@ -48,10 +56,12 @@ public class AbstractPerson {
 	 * 
 	 * @param id
 	 */
+	@Override
 	public void setId(long id) {
 		this.id = id;
 	}
 
+	@Override
 	public long getId() {
 		return this.id;
 	}
@@ -60,11 +70,13 @@ public class AbstractPerson {
 	 * 
 	 * @param address
 	 */
-	public void setAddress(string address) {
+	@Override
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
-	public string getAddress() {
+	@Override
+	public String getAddress() {
 		return this.address;
 	}
 
@@ -73,11 +85,13 @@ public class AbstractPerson {
 	 * @param phoneNum
 	 * @param parameter
 	 */
+	@Override
 	public void setPhoneNum(int phoneNum, long parameter) {
 		// TODO - implement AbstractPerson.setPhoneNum
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public long getPhoneNum() {
 		return this.phoneNum;
 	}
@@ -86,11 +100,12 @@ public class AbstractPerson {
 	 * 
 	 * @param parentName
 	 */
-	public void setParentName(string parentName) {
+	@Override
+	public void setParentName(String parentName) {
 		this.parentName = parentName;
 	}
-
-	public string getParentName() {
+	@Override
+	public String getParentName() {
 		return this.parentName;
 	}
 

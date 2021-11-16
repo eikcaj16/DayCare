@@ -1,9 +1,13 @@
-public class AbstractGroup {
+package edu.neu.csye6200.model;
+
+import java.util.List;
+
+public class Group extends AbstractGroup{
 
 	private Teacher teacher;
 	private List<Student> students;
 	private int groupId;
-
+	
 	public Teacher getTeacher() {
 		return this.teacher;
 	}
@@ -18,7 +22,7 @@ public class AbstractGroup {
 
 	public List<Student> getAllStudents() {
 		// TODO - implement AbstractGroup.getAllStudents
-		throw new UnsupportedOperationException();
+		return students.stream().sorted().toList();
 	}
 
 	public int getGroupId() {
@@ -37,32 +41,32 @@ public class AbstractGroup {
 	 * 
 	 * @param student
 	 */
-	public int addStudent(Student student) {
+	public void addStudent(Student student) {
 		// TODO - implement AbstractGroup.addStudent
-		throw new UnsupportedOperationException();
+		students.add(student);
 	}
 
 	/**
 	 * 
 	 * @param student
 	 */
-	public boolean delStudent(Student student) {
+	public void delStudent(Student student) {
 		// TODO - implement AbstractGroup.delStudent
-		throw new UnsupportedOperationException();
+		students.add(student);
 	}
 
 	/**
 	 * 
 	 * @param studentId
 	 */
-	public boolean delStudent(long studentId) {
+	public void delStudent(long studentId) {
 		// TODO - implement AbstractGroup.delStudent
 		throw new UnsupportedOperationException();
 	}
 
 	public int getNumOfStudents() {
 		// TODO - implement AbstractGroup.getNumOfStudents
-		throw new UnsupportedOperationException();
+		return students.size();
 	}
 
 }

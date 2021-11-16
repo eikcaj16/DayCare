@@ -1,10 +1,13 @@
-public class AbstractClassroom {
+package edu.neu.csye6200.model;
 
+import java.util.List;
+
+public class Classroom extends AbstractClassroom {
+	
 	private int classroomId;
-	private string classroomName;
-	private List<AbstractPerson> students;
-	private List<AbstractPerson> teachers;
-	private List<AbstractGroup> groups;
+	private List<Student> students;
+	private List<Teacher> teachers;
+	private List<Group> groups;
 
 	public int getClassroomId() {
 		return this.classroomId;
@@ -20,113 +23,111 @@ public class AbstractClassroom {
 
 	public int getNumOfStudents() {
 		// TODO - implement AbstractClassroom.getNumOfStudents
-		throw new UnsupportedOperationException();
+		return students.size();
 	}
 
-	public Abstract<Student> getAllStudents() {
+	public List<Student> getAllStudents() {
 		// TODO - implement AbstractClassroom.getAllStudents
-		throw new UnsupportedOperationException();
+		return students.stream().sorted().toList();
 	}
 
 	/**
 	 * 
 	 * @param student
 	 */
-	public long addStudent(Student student) {
+	public void addStudent(Student student) {
 		// TODO - implement AbstractClassroom.addStudent
-		throw new UnsupportedOperationException();
+		students.add(student);
 	}
 
 	/**
 	 * 
 	 * @param student
 	 */
-	public boolean delStudent(Student student) {
+	public void delStudent(Student student) {
 		// TODO - implement AbstractClassroom.delStudent
-		throw new UnsupportedOperationException();
+		students.remove(student);
 	}
 
 	/**
 	 * 
 	 * @param studentId
 	 */
-	public boolean delStudent(long studentId) {
+	public void delStudent(long studentId) {
 		// TODO - implement AbstractClassroom.delStudent
-		throw new UnsupportedOperationException();
 	}
 
 	public int getNumOfTeachers() {
 		// TODO - implement AbstractClassroom.getNumOfTeachers
-		throw new UnsupportedOperationException();
+		return teachers.size();
 	}
 
 	public List<Teacher> getAllTeachers() {
 		// TODO - implement AbstractClassroom.getAllTeachers
-		throw new UnsupportedOperationException();
+		return teachers.stream().sorted().toList();
 	}
 
 	/**
 	 * 
 	 * @param teacher
 	 */
-	public long addTeacher(Teacher teacher) {
+	public void addTeacher(Teacher teacher) {
 		// TODO - implement AbstractClassroom.addTeacher
-		throw new UnsupportedOperationException();
+		teachers.add(teacher);
 	}
 
 	/**
 	 * 
 	 * @param teacher
 	 */
-	public boolean delTeacher(Teacher teacher) {
+	public void delTeacher(Teacher teacher) {
 		// TODO - implement AbstractClassroom.delTeacher
-		throw new UnsupportedOperationException();
+		teachers.remove(teacher);
 	}
 
 	/**
 	 * 
 	 * @param teacherId
 	 */
-	public boolean delTeacher(long teacherId) {
+	public void delTeacher(long teacherId) {
 		// TODO - implement AbstractClassroom.delTeacher
 		throw new UnsupportedOperationException();
 	}
 
 	public int getNumOfGroups() {
 		// TODO - implement AbstractClassroom.getNumOfGroups
-		throw new UnsupportedOperationException();
+		return groups.size();
 	}
 
-	public List<AbstractGroup> getAllGroups() {
+	public List<Group> getAllGroups() {
 		// TODO - implement AbstractClassroom.getAllGroups
-		throw new UnsupportedOperationException();
+		return groups.stream().sorted().toList();
 	}
 
 	/**
 	 * 
 	 * @param teacher
 	 */
-	public int addGroup(Teacher teacher) {
+	public void addGroup(Group grp) {
 		// TODO - implement AbstractClassroom.addGroup
-		throw new UnsupportedOperationException();
+		groups.add(grp);
 	}
 
 	/**
 	 * 
 	 * @param group
 	 */
-	public boolean delGroup(Group group) {
+	public void delGroup(Group group) {
 		// TODO - implement AbstractClassroom.delGroup
-		throw new UnsupportedOperationException();
+		groups.remove(group);
 	}
 
 	/**
 	 * 
 	 * @param groupId
 	 */
-	public boolean delGroup(int groupId) {
+	public void delGroup(int groupId) {
 		// TODO - implement AbstractClassroom.delGroup
 		throw new UnsupportedOperationException();
 	}
-
 }

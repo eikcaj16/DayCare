@@ -1,5 +1,9 @@
-public class AbstractSchool {
+package edu.neu.csye6200.model;
 
+import java.util.List;
+
+public class School extends AbstractSchool {
+	
 	private List<AbstractClassroom> classrooms;
 
 	public void trackStudentEnrollment() {
@@ -24,37 +28,37 @@ public class AbstractSchool {
 
 	public int getNumOfClassrooms() {
 		// TODO - implement AbstractSchool.getNumOfClassrooms
-		throw new UnsupportedOperationException();
+		return classrooms.size();
 	}
 
 	public List<AbstractClassroom> getAllClassrooms() {
 		// TODO - implement AbstractSchool.getAllClassrooms
-		throw new UnsupportedOperationException();
+		return classrooms.stream().sorted().toList();
 	}
 
 	/**
 	 * 
 	 * @param classroomId
 	 */
-	public int addClassroom(Classroom classroomId) {
+	public void addClassroom(Classroom classroom) {
 		// TODO - implement AbstractSchool.addClassroom
-		throw new UnsupportedOperationException();
+		classrooms.add(classroom);
 	}
 
 	/**
 	 * 
 	 * @param classroom
 	 */
-	public boolean delClassroom(Classroom classroom) {
+	public void delClassroom(Classroom classroom) {
 		// TODO - implement AbstractSchool.delClassroom
-		throw new UnsupportedOperationException();
+		classrooms.remove(classroom);
 	}
 
 	/**
 	 * 
 	 * @param classroomId
 	 */
-	public boolean delClassroom(int classroomId) {
+	public void delClassroom(int classroomId) {
 		// TODO - implement AbstractSchool.delClassroom
 		throw new UnsupportedOperationException();
 	}
