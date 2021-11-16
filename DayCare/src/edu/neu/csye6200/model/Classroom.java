@@ -1,13 +1,21 @@
 package edu.neu.csye6200.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Classroom extends AbstractClassroom {
 	
 	private int classroomId;
-	private List<Student> students;
-	private List<Teacher> teachers;
-	private List<Group> groups;
+	private final List<Student> students;
+	private final List<Teacher> teachers;
+	private final List<Group> groups;
+
+	public Classroom(int id){
+		setClassroomId(id);
+		students = new ArrayList<>();
+		teachers = new ArrayList<>();
+		groups = new ArrayList<>();
+	}
 
 	public int getClassroomId() {
 		return this.classroomId;
@@ -15,7 +23,7 @@ public class Classroom extends AbstractClassroom {
 
 	/**
 	 * 
-	 * @param id
+	 * @param id An Integer for identifying Classroom
 	 */
 	protected void setClassroomId(int id) {
 		this.classroomId = id;
@@ -33,7 +41,7 @@ public class Classroom extends AbstractClassroom {
 
 	/**
 	 * 
-	 * @param student
+	 * @param student A student Object
 	 */
 	public void addStudent(Student student) {
 		// TODO - implement AbstractClassroom.addStudent
@@ -42,7 +50,7 @@ public class Classroom extends AbstractClassroom {
 
 	/**
 	 * 
-	 * @param student
+	 * @param student A student Object
 	 */
 	public void delStudent(Student student) {
 		// TODO - implement AbstractClassroom.delStudent
@@ -51,10 +59,17 @@ public class Classroom extends AbstractClassroom {
 
 	/**
 	 * 
-	 * @param studentId
+	 * @param studentId A long data type student Id
 	 */
 	public void delStudent(long studentId) {
 		// TODO - implement AbstractClassroom.delStudent
+		for(Student s: students){
+			if(s.getStudentId() == studentId){
+				students.remove(s);
+				return;
+			}
+		}
+		System.out.println("ERROR! Fail to find student with Id:" + studentId);
 	}
 
 	public int getNumOfTeachers() {
@@ -69,7 +84,7 @@ public class Classroom extends AbstractClassroom {
 
 	/**
 	 * 
-	 * @param teacher
+	 * @param teacher A teacher Object
 	 */
 	public void addTeacher(Teacher teacher) {
 		// TODO - implement AbstractClassroom.addTeacher
@@ -78,7 +93,7 @@ public class Classroom extends AbstractClassroom {
 
 	/**
 	 * 
-	 * @param teacher
+	 * @param teacher A teacher Object
 	 */
 	public void delTeacher(Teacher teacher) {
 		// TODO - implement AbstractClassroom.delTeacher
@@ -87,10 +102,18 @@ public class Classroom extends AbstractClassroom {
 
 	/**
 	 * 
-	 * @param teacherId
+	 * @param teacherId A long data type teacher Id
 	 */
 	public void delTeacher(long teacherId) {
 		// TODO - implement AbstractClassroom.delTeacher
+		for(Teacher t: teachers){
+			if(t.getEmployeeId() == teacherId){
+				teachers.remove(t);
+				return;
+			}
+		}
+		System.out.println("ERROR! Fail to find a teacher with Id:" + teacherId);
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -106,16 +129,16 @@ public class Classroom extends AbstractClassroom {
 
 	/**
 	 * 
-	 * @param teacher
+	 * @param group A group Object
 	 */
-	public void addGroup(Group grp) {
+	public void addGroup(Group group) {
 		// TODO - implement AbstractClassroom.addGroup
-		groups.add(grp);
+		groups.add(group);
 	}
 
 	/**
 	 * 
-	 * @param group
+	 * @param group A group Object
 	 */
 	public void delGroup(Group group) {
 		// TODO - implement AbstractClassroom.delGroup
@@ -124,10 +147,19 @@ public class Classroom extends AbstractClassroom {
 
 	/**
 	 * 
-	 * @param groupId
+	 * @param groupId A int data type group Id
 	 */
 	public void delGroup(int groupId) {
 		// TODO - implement AbstractClassroom.delGroup
+		for(Group g: groups){
+			if(g.getGroupId() == groupId){
+				groups.remove(g);
+				return;
+			}
+		}
+
+		System.out.println("ERROR! Fail to find a group with Id:" + groupId);
+
 		throw new UnsupportedOperationException();
 	}
 }
