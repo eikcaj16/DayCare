@@ -6,7 +6,7 @@ public class Group extends AbstractGroup{
 
 	private Teacher teacher;
 	private List<Student> students;
-	private int groupId;
+	private int groupSize;
 	
 	public Teacher getTeacher() {
 		return this.teacher;
@@ -26,15 +26,15 @@ public class Group extends AbstractGroup{
 	}
 
 	public int getGroupId() {
-		return this.groupId;
+		return this.groupSize;
 	}
 
 	/**
 	 * 
-	 * @param groupId
+	 * @param groupSize
 	 */
-	protected void setGroupId(int groupId) {
-		this.groupId = groupId;
+	protected void setGroupId(int groupSize) {
+		this.groupSize = groupSize;
 	}
 
 	/**

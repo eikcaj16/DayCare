@@ -1,0 +1,56 @@
+package edu.neu.csye6200.model;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FileUtil {
+	
+	//This function takes a list as a parameter and writes to the file
+	public static void writeTextFile(List<String> entryList, String fileName) {
+		File entryFile = new File(fileName);
+		try (FileWriter fileWriter = new FileWriter(entryFile, true);
+			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+			for (String entry : entryList) {
+				bufferedWriter.write(entry);
+				bufferedWriter.newLine();
+			}
+		} catch (IOException e) {
+			System.err.format("IOException: %s%n", e);
+		}
+	}
+	
+	//This function takes a string as a parameter and writes to file
+	public static void writeTextFile(String entry,  String fileName) {
+		File entryFile = new File(fileName);
+		try (FileWriter fileWriter = new FileWriter(entryFile, true);
+			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+			bufferedWriter.write(entry);
+			bufferedWriter.newLine();
+		} catch (IOException e) {
+			System.err.format("IOException: %s%n", e);
+		}	
+	}
+	
+	//This function reads the file and returns a string
+	public static List<String> readTextFile(String fileName) {
+		List<String> entryList = new ArrayList<>();
+		try (BufferedReader bufferedReader =  new BufferedReader(new FileReader(fileName))) {
+			String line ="";
+			while((line = bufferedReader.readLine())!=null) {
+				entryList.add(line);
+				System.out.println(line);
+			}
+		} catch (Exception e) {
+			System.err.format("Exception: %s%n", e);
+		}
+		return entryList;
+	}
+
+
+}

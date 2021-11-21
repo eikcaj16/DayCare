@@ -7,6 +7,7 @@ public class Student extends Person {
 	private LocalDate immunizationDate;
 	private LocalDate registrationDate;
 	private long studentId;
+	
 
 	/**
 	 * 
