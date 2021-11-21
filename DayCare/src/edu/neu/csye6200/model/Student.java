@@ -3,6 +3,8 @@ package edu.neu.csye6200.model;
 import java.time.*;
 import java.util.Map;
 
+import edu.neu.csye6200.utils.ConversionHelper;
+
 public class Student extends Person {
 
 	private LocalDate immunizationDate;
@@ -47,26 +49,16 @@ public class Student extends Person {
 	}
 	
 	public static Student createStudent(String[] attributes) {
-		
+		ConversionHelper convHelp = new ConversionHelper();
 		Student s = new Student();
 		s.setFirstName(attributes[0]);
 		s.setLastName(attributes[1]);
-		try {
-			s.setAge(Integer.parseInt(attributes[2]));
-			s.setPhoneNum(Long.parseLong(attributes[4]));
-			s.setStudentId(Integer.parseInt(attributes[7]));
-		} catch (NumberFormatException nfe) {
-			nfe.printStackTrace();
-		}
-		
-		s.setAddress(attributes[3]);
-		try{
-			s.setImmunizationDate(LocalDate.parse(attributes[5]));
-			s.setRegistrationDate(LocalDate.parse(attributes[6]));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		s.setAge(convHelp.stringToInt(attributes[2]));
+		s.setAddress(attributes[3]);	
+		s.setPhoneNum(convHelp.stringToLong(attributes[4]));
+		s.setImmunizationDate(convHelp.stringtoDate(attributes[5]));
+		s.setRegistrationDate(convHelp.stringtoDate(attributes[6]));
+		s.setStudentId(convHelp.stringToLong(attributes[7]));
 		
 		return s;
 	}
