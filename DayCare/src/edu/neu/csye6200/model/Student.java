@@ -1,6 +1,7 @@
 package edu.neu.csye6200.model;
 
-import edu.neu.csye6200.utils.LocalDate;
+import java.time.*;
+import java.util.Map;
 
 public class Student extends Person {
 
@@ -43,6 +44,20 @@ public class Student extends Person {
 
 	public long getStudentId() {
 		return this.studentId;
+	}
+	
+	public static Student createStudent(String[] attributes) {
+		Student s = new Student();
+		s.setFirstName(attributes[0]);
+		s.setLastName(attributes[1]);
+		s.setAge(Integer.parseInt(attributes[2]));
+		s.setAddress(attributes[3]);
+		s.setPhoneNum(Integer.parseInt(attributes[4]));
+		s.setImmunizationDate(LocalDate.parse(attributes[5]));
+		s.setRegistrationDate(LocalDate.parse(attributes[6]));
+		s.setStudentId(Integer.parseInt(attributes[7]));
+		
+		return s;
 	}
 
 }
