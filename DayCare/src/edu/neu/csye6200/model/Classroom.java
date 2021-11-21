@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Classroom extends AbstractClassroom {
-	
+
 	private int classroomId;
 	private final List<Student> students;
 	private final List<Teacher> teachers;
 	private final List<Group> groups;
 
-	public Classroom(int id){
-		setClassroomId(id);
+	public Classroom(){
+		setClassroomId(this.hashCode());
 		students = new ArrayList<>();
 		teachers = new ArrayList<>();
 		groups = new ArrayList<>();
