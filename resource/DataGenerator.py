@@ -4,7 +4,7 @@ import random
 StudentNum = 300
 TeacherNum = 50
 
-Title_P = ["FirstName", "LastName", "Age", "Address", "PhoneNum"]
+Title_P = ["FirstName", "LastName", "Age(month)", "Address", "PhoneNum"]
 Title_S = ["immunizationDate", "registrationDate", "studentId"]
 Title_T = ["review", "employeeId"]
 
@@ -35,15 +35,15 @@ def generate_student_data(filename):
         name_idx = random.randint(0, len(Names) - 1)
         first_name = Names[name_idx]
         last_name = Names[(name_idx + 1000) % len(Names)]
-        age = random.randint(18, 25)
+        age = random.randint(6, 80)
         # pid += random.randint(1, 11)
         address = Names[(name_idx + 1500) % len(Names)] + " Ave " + str(random.randint(1, 500))
         phone_num += random.randint(1, 1000)
         # parent_name = Names[(name_idx + 2000) % len(Names)]
 
-        immunization_date = str(random.randint(1, 13)) + "-" + str(random.randint(1, 28)) + "-2020"
-        registration_date = str(random.randint(1, 13)) + "-" + str(random.randint(1, 28)) + "-" \
-                            + str(random.randint(2018, 2022))
+        immunization_date = "2020-" + str(random.randint(1, 12)) + "-" + str(random.randint(1, 28))
+        registration_date = str(random.randint(2018, 2022)) + "-" + str(random.randint(1, 12)) \
+                            + "-" + str(random.randint(1, 28))
         # gpa = "%.1f" % (2 + random.random() * 2.0)
         stu_id += random.randint(1, 11)
 
@@ -65,7 +65,7 @@ def generate_teacher_data(filename):
         name_idx = random.randint(0, len(Names) - 1)
         first_name = Names[name_idx]
         last_name = Names[(name_idx + 1000) % len(Names)]
-        age = random.randint(30, 60)
+        age = random.randint(360, 600)
         # pid += random.randint(1, 11)
         address = Names[(name_idx + 1500) % len(Names)] + " Ave " + str(random.randint(1, 500))
         phone_num += random.randint(1, 1000)
