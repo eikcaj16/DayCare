@@ -2,7 +2,7 @@ package edu.neu.csye6200.model;
 
 import java.util.*;
 
-abstract class AbstractClassroom {
+public abstract class AbstractClassroom {
 
 	abstract int getClassroomId();
 

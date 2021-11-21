@@ -3,64 +3,74 @@ package edu.neu.csye6200.model;
 import java.util.List;
 
 public class School extends AbstractSchool {
-	
-	private List<AbstractClassroom> classrooms;
+    public static List<AbstractClassroom> classrooms;
 
-	public void trackStudentEnrollment() {
-		// TODO - implement AbstractSchool.trackStudentEnrollment
-		throw new UnsupportedOperationException();
-	}
+    // TODO - Arrange enums into an appropriate place
+    public enum StudentStatus {
+        enrolled,
+        alumni
+    }
 
-	public void trackStudentImmunization() {
-		// TODO - implement AbstractSchool.trackStudentImmunization
-		throw new UnsupportedOperationException();
-	}
+    public enum ImmunizationStatus {
+        noRecord,
+        active,
+        expired
+    }
 
-	public void trackStudentRegistration() {
-		// TODO - implement AbstractSchool.trackStudentRegistration
-		throw new UnsupportedOperationException();
-	}
+    public void trackStudentEnrollment() {
+        // TODO - implement AbstractSchool.trackStudentEnrollment
+        throw new UnsupportedOperationException();
+    }
 
-	public void trackAnnualEmployeeReview() {
-		// TODO - implement AbstractSchool.trackAnnualEmployeeReview
-		throw new UnsupportedOperationException();
-	}
+    public void trackStudentImmunization() {
+        // TODO - implement AbstractSchool.trackStudentImmunization
+        throw new UnsupportedOperationException();
+    }
 
-	public int getNumOfClassrooms() {
-		// TODO - implement AbstractSchool.getNumOfClassrooms
-		return classrooms.size();
-	}
+    public void trackStudentRegistration() {
+        // TODO - implement AbstractSchool.trackStudentRegistration
+        throw new UnsupportedOperationException();
+    }
 
-	public List<AbstractClassroom> getAllClassrooms() {
-		// TODO - implement AbstractSchool.getAllClassrooms
-		return classrooms.stream().sorted().toList();
-	}
+    public void trackAnnualEmployeeReview() {
+        // TODO - implement AbstractSchool.trackAnnualEmployeeReview
+        throw new UnsupportedOperationException();
+    }
 
-	/**
-	 * 
-	 * @param classroomId
-	 */
-	public void addClassroom(Classroom classroom) {
-		// TODO - implement AbstractSchool.addClassroom
-		classrooms.add(classroom);
-	}
+    public int getNumOfClassrooms() {
+        return classrooms.size();
+    }
 
-	/**
-	 * 
-	 * @param classroom
-	 */
-	public void delClassroom(Classroom classroom) {
-		// TODO - implement AbstractSchool.delClassroom
-		classrooms.remove(classroom);
-	}
+    public List<AbstractClassroom> getAllClassrooms() {
+        return classrooms.stream().sorted().toList();
+    }
 
-	/**
-	 * 
-	 * @param classroomId
-	 */
-	public void delClassroom(int classroomId) {
-		// TODO - implement AbstractSchool.delClassroom
-		throw new UnsupportedOperationException();
-	}
+    /**
+     *
+     */
+    public AbstractClassroom addClassroom() {
+        AbstractClassroom classroom = new Classroom();
+        classrooms.add(classroom);
+        return classroom;
+    }
+
+    /**
+     * @param classroom
+     */
+    public void delClassroom(Classroom classroom) {
+        classrooms.remove(classroom);
+    }
+
+    /**
+     * @param classroomId
+     */
+    public void delClassroom(int classroomId) {
+        for (AbstractClassroom c : classrooms) {
+            if (c.getClassroomId() == classroomId) {
+                classrooms.remove(c);
+                return;
+            }
+        }
+    }
 
 }
