@@ -68,12 +68,11 @@ public class Person extends AbstractPerson {
 	/**
 	 * 
 	 * @param phoneNum
-	 * @param parameter
 	 */
 	@Override
-	public void setPhoneNum(int phoneNum, long parameter) {
+	public void setPhoneNum(long phoneNum) {
 		// TODO - implement AbstractPerson.setPhoneNum
-		throw new UnsupportedOperationException();
+		this.phoneNum = phoneNum;
 	}
 
 	@Override
