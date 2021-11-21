@@ -4,7 +4,7 @@ import random
 StudentNum = 300
 TeacherNum = 50
 
-Title_P = ["FirstName", "LastName", "Age", "Id", "Address", "PhoneNum", "ParentName"]
+Title_P = ["FirstName", "LastName", "Age", "Address", "PhoneNum"]
 Title_S = ["immunizationDate", "registrationDate", "studentId"]
 Title_T = ["review", "employeeId"]
 
@@ -36,10 +36,10 @@ def generate_student_data(filename):
         first_name = Names[name_idx]
         last_name = Names[(name_idx + 1000) % len(Names)]
         age = random.randint(18, 25)
-        pid += random.randint(1, 11)
+        # pid += random.randint(1, 11)
         address = Names[(name_idx + 1500) % len(Names)] + " Ave " + str(random.randint(1, 500))
         phone_num += random.randint(1, 1000)
-        parent_name = Names[(name_idx + 2000) % len(Names)]
+        # parent_name = Names[(name_idx + 2000) % len(Names)]
 
         immunization_date = str(random.randint(1, 13)) + "-" + str(random.randint(1, 28)) + "-2020"
         registration_date = str(random.randint(1, 13)) + "-" + str(random.randint(1, 28)) + "-" \
@@ -47,7 +47,8 @@ def generate_student_data(filename):
         # gpa = "%.1f" % (2 + random.random() * 2.0)
         stu_id += random.randint(1, 11)
 
-        info = [first_name, last_name, age, pid, address, phone_num, parent_name,
+        info = [first_name, last_name, age,
+                address, phone_num,
                 immunization_date, registration_date, stu_id]
 
         student_writer.writerow(info)
@@ -65,15 +66,16 @@ def generate_teacher_data(filename):
         first_name = Names[name_idx]
         last_name = Names[(name_idx + 1000) % len(Names)]
         age = random.randint(30, 60)
-        pid += random.randint(1, 11)
+        # pid += random.randint(1, 11)
         address = Names[(name_idx + 1500) % len(Names)] + " Ave " + str(random.randint(1, 500))
         phone_num += random.randint(1, 1000)
-        parent_name = Names[(name_idx + 2000) % len(Names)]
+        # parent_name = Names[(name_idx + 2000) % len(Names)]
 
         review = 0.0
         t_id += random.randint(1, 11)
 
-        info = [first_name, last_name, age, pid, address, phone_num, parent_name,
+        info = [first_name, last_name, age,
+                address, phone_num,
                 review, t_id]
 
         teacher_writer.writerow(info)
