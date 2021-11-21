@@ -1,7 +1,5 @@
 package edu.neu.csye6200.model;
 
-import java.time.LocalDate;
-
 import edu.neu.csye6200.utils.ConversionHelper;
 
 public class Teacher extends Person {
