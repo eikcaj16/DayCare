@@ -113,8 +113,6 @@ public class Classroom extends AbstractClassroom {
 			}
 		}
 		System.out.println("ERROR! Fail to find a teacher with Id:" + teacherId);
-
-		throw new UnsupportedOperationException();
 	}
 
 	public int getNumOfGroups() {
@@ -159,7 +157,5 @@ public class Classroom extends AbstractClassroom {
 		}
 
 		System.out.println("ERROR! Fail to find a group with Id:" + groupId);
-
-		throw new UnsupportedOperationException();
 	}
 }
