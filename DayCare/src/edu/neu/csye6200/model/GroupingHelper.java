@@ -13,9 +13,8 @@ public class GroupingHelper {
 	static List<Teacher> teachers = new ArrayList<>();
 
 	
-public static void groupMe() {
+	public static void groupMe() {
 		
-
 		students.clear();
 		teachers.clear();
 		List<String> studentList = FileUtil.readTextFile(studentfile);
@@ -130,7 +129,7 @@ public static void groupMe() {
 			tempC = tempC + classSize;
 		}
 		
-		classes.forEach(c -> Daycare.addClassroom(c));
+		classes.forEach(c -> School(c));
 		
 	}
 	
