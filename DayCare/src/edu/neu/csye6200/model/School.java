@@ -1,6 +1,8 @@
 package edu.neu.csye6200.model;
 
+import java.io.IOException;
 import java.util.List;
+import static edu.neu.csye6200.utils.FileUtil.*;
 
 public class School extends AbstractSchool {
     public static List<AbstractClassroom> classrooms;
@@ -37,18 +39,10 @@ public class School extends AbstractSchool {
         throw new UnsupportedOperationException();
     }
 
-    public int getNumOfClassrooms() {
-        return classrooms.size();
-    }
-
-    public List<AbstractClassroom> getAllClassrooms() {
-        return classrooms.stream().sorted().toList();
-    }
-
     /**
      *
      */
-    public AbstractClassroom addClassroom() {
+    public static AbstractClassroom addClassroom() {
         AbstractClassroom classroom = new Classroom();
         classrooms.add(classroom);
         return classroom;
@@ -57,20 +51,21 @@ public class School extends AbstractSchool {
     /**
      * @param classroom
      */
-    public void delClassroom(Classroom classroom) {
+    public static void delClassroom(Classroom classroom) {
         classrooms.remove(classroom);
     }
 
     /**
      * @param classroomId
      */
-    public void delClassroom(int classroomId) {
-        for (AbstractClassroom c : classrooms) {
-            if (c.getClassroomId() == classroomId) {
-                classrooms.remove(c);
-                return;
-            }
-        }
+    public static void delClassroom(int classroomId) {
+        classrooms.stream().filter(c -> c.getClassroomId() == classroomId).forEach(c -> classrooms.remove(c));
     }
 
+    public static void init() throws IOException {
+        List<Student> students = readStudentFromCSV("resource/student_data.csv");
+        List<Teacher> teachers = readTeacherFromCSV("resource/teachers_data.csv");
+
+        
+    }
 }
