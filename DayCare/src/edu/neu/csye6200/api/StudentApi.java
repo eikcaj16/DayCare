@@ -103,6 +103,7 @@ public class StudentApi extends AbstractStudent {
 
     @Override
     public void delStudent(Student student) {
+        studentDao.deleteStudentFromDb(student);
 
     }
 
