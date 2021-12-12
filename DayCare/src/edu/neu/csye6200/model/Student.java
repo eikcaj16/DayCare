@@ -1,19 +1,14 @@
 package edu.neu.csye6200.model;
 
 import java.time.*;
-
-import java.util.Date;
 import java.util.Map;
 
-// import java.util.Map;
-
-// import edu.neu.csye6200.utils.ConversionHelper;
-
+import edu.neu.csye6200.utils.ConversionHelper;
 
 public class Student extends Person {
 
-	private Date immunizationDate;
-	private Date registrationDate;
+	private LocalDate immunizationDate;
+	private LocalDate registrationDate;
 	private long studentId;
 	
 	
@@ -21,11 +16,11 @@ public class Student extends Person {
 	 * 
 	 * @param immunizationDate
 	 */
-	public void setImmunizationDate(Date immunizationDate) {
+	public void setImmunizationDate(LocalDate immunizationDate) {
 		this.immunizationDate = immunizationDate;
 	}
 
-	public Date getImmunizationDate() {
+	public LocalDate getImmunizationDate() {
 		return this.immunizationDate;
 	}
 
@@ -33,11 +28,11 @@ public class Student extends Person {
 	 * 
 	 * @param registrationDate
 	 */
-	public void setRegistrationDate(Date registrationDate) {
+	public void setRegistrationDate(LocalDate registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
-	public Date getRegistrationDate() {
+	public LocalDate getRegistrationDate() {
 		return this.registrationDate;
 	}
 
@@ -55,7 +50,6 @@ public class Student extends Person {
 	}
 	
 	public static Student createStudent(String[] attributes) {
-
 		ConversionHelper convHelp = new ConversionHelper();
 		Student s = new Student();
 		s.setFirstName(attributes[0]);
@@ -63,10 +57,9 @@ public class Student extends Person {
 		s.setAge(convHelp.stringToInt(attributes[2]));
 		s.setAddress(attributes[3]);	
 		s.setPhoneNum(convHelp.stringToLong(attributes[4]));
-// 		s.setImmunizationDate(convHelp.stringtoDate(attributes[5]));
-// 		s.setRegistrationDate(convHelp.stringtoDate(attributes[6]));
+		s.setImmunizationDate(convHelp.stringtoDate(attributes[5]));
+		s.setRegistrationDate(convHelp.stringtoDate(attributes[6]));
 		s.setStudentId(convHelp.stringToLong(attributes[7]));
-
 		
 		return s;
 	}

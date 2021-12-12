@@ -2,17 +2,36 @@ package edu.neu.csye6200.model;
 
 import java.util.*;
 
-public abstract class AbstractSchool {
+abstract class AbstractSchool {
 
-    public abstract void trackStudentEnrollment();
+	abstract void trackStudentEnrollment();
 
-    public abstract void trackStudentImmunization();
+	abstract void trackStudentImmunization();
 
-    public abstract void trackStudentRegistration();
+	abstract void trackStudentRegistration();
 
-    public abstract void trackAnnualEmployeeReview();
+	abstract void trackAnnualEmployeeReview();
 
-    public abstract List<AbstractClassroom> getAllClassrooms();
+	abstract int getNumOfClassrooms();
 
-    public abstract int getNumOfClassrooms();
+	abstract List<AbstractClassroom> getAllClassrooms();
+
+	/**
+	 * 
+	 * @param classroomId
+	 */
+	abstract void addClassroom(Classroom classroom);
+
+	/**
+	 * 
+	 * @param classroom
+	 */
+	abstract void delClassroom(Classroom classroom);
+
+	/**
+	 * 
+	 * @param classroomId
+	 */
+	abstract void delClassroom(int classroomId);
+
 }
