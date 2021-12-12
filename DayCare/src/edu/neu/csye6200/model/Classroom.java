@@ -4,11 +4,27 @@ import edu.neu.csye6200.utils.DatabaseUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Classroom extends AbstractClassroom {
+// <<<<<<< db_dev
+// =======
+
+// 	private int classroomId;
+// 	private final List<Student> students;
+// 	private final List<Teacher> teachers;
+// 	private final List<Group> groups;
+
+// 	public Classroom(){
+// 		setClassroomId(this.hashCode());
+// 		students = new ArrayList<>();
+// 		teachers = new ArrayList<>();
+// 		groups = new ArrayList<>();
+// 	}
+// >>>>>>> development
 
 	private static int class_count = 0;
 	private static final int[] AllGroupSize = {4, 5, 6, 8, 12, 15};
@@ -32,6 +48,7 @@ public class Classroom extends AbstractClassroom {
 			groups.add(new Group(i));
 		}
 	}
+
 
 	@Override
 	public int getClassroomId() {
@@ -84,15 +101,10 @@ public class Classroom extends AbstractClassroom {
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
-
 		return students;
 	}
 
-	/**
-	 * add a student to classroom according to rules
-	 * - set the classroom_id of Student table in database
-	 * @param studentId a student id
-	 */
+
 	@Override
 	public boolean addStudent(long studentId) {
 		if(student_num >= AllGroupSize[classroom_type] * AllGroupNum[classroom_type]){
@@ -151,6 +163,7 @@ public class Classroom extends AbstractClassroom {
 	}
 
 	/**
+
 	 * delete a student from classroom
 	 * @param studentId a student id
 	 */
@@ -186,6 +199,20 @@ public class Classroom extends AbstractClassroom {
 		student_num--;
 		System.out.println("Delete student success!");
 		return true;
+
+// 	 * 
+// 	 * @param studentId A long data type student Id
+// 	 */
+// 	public void delStudent(long studentId) {
+// 		// TODO - implement AbstractClassroom.delStudent
+// 		for(Student s: students){
+// 			if(s.getStudentId() == studentId){
+// 				students.remove(s);
+// 				return;
+// 			}
+// 		}
+// 		System.out.println("ERROR! Fail to find student with Id:" + studentId);
+
 	}
 
 	@Override
@@ -200,9 +227,14 @@ public class Classroom extends AbstractClassroom {
 	}
 
 	/**
+
 	 * add a teacher to classroom
 	 * @param teacherId
 	 * @return
+
+	 * 
+	 * @param teacher A teacher Object
+
 	 */
 	@Override
 	public boolean addTeacher(long teacherId) {
@@ -261,6 +293,31 @@ public class Classroom extends AbstractClassroom {
 					return false;
 				}
 
+// 	/**
+// 	 * 
+// 	 * @param teacher A teacher Object
+// 	 */
+// 	public void delTeacher(Teacher teacher) {
+// 		// TODO - implement AbstractClassroom.delTeacher
+// 		teachers.remove(teacher);
+// 	}
+
+// 	/**
+// 	 * 
+// 	 * @param teacherId A long data type teacher Id
+// 	 */
+// 	public void delTeacher(long teacherId) {
+// 		// TODO - implement AbstractClassroom.delTeacher
+// 		for(Teacher t: teachers){
+// 			if(t.getEmployeeId() == teacherId){
+// 				teachers.remove(t);
+// 				return;
+// 			}
+// 		}
+// 		System.out.println("ERROR! Fail to find a teacher with Id:" + teacherId);
+// 	}
+
+
 				int g_id = rs.getInt("group_id");
 				groups.get(g_id).setTeacher(-1);
 
@@ -280,6 +337,7 @@ public class Classroom extends AbstractClassroom {
 			e.printStackTrace();
 		}
 
+
 		return false;
 	}
 
@@ -294,5 +352,39 @@ public class Classroom extends AbstractClassroom {
 		int month = Integer.parseInt(date[1]);
 		LocalDate now = LocalDate.now();
 		return 12 * (now.getYear() - year - 1) + (12 - now.getMonthValue()) + month;
+
+// 	/**
+// 	 * 
+// 	 * @param group A group Object
+// 	 */
+// 	public void addGroup(Group group) {
+// 		// TODO - implement AbstractClassroom.addGroup
+// 		groups.add(group);
+// 	}
+
+// 	/**
+// 	 * 
+// 	 * @param group A group Object
+// 	 */
+// 	public void delGroup(Group group) {
+// 		// TODO - implement AbstractClassroom.delGroup
+// 		groups.remove(group);
+// 	}
+
+// 	/**
+// 	 * 
+// 	 * @param groupId A int data type group Id
+// 	 */
+// 	public void delGroup(int groupId) {
+// 		// TODO - implement AbstractClassroom.delGroup
+// 		for(Group g: groups){
+// 			if(g.getGroupId() == groupId){
+// 				groups.remove(g);
+// 				return;
+// 			}
+// 		}
+
+// 		System.out.println("ERROR! Fail to find a group with Id:" + groupId);
+
 	}
 }

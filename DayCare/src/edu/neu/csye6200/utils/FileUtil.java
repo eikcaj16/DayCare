@@ -12,6 +12,7 @@ import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Teacher;
 
 public class FileUtil {
+
 	public static void writeStudentToCSV(String fileName, List<List<String>> studentArrays) throws IOException{
 		try {
 			BufferedWriter br = new BufferedWriter(new FileWriter(fileName));
@@ -33,6 +34,7 @@ public class FileUtil {
 		}
 	}
 	
+
 	public static List<Student> readStudentFromCSV(String fileName) throws IOException{
 		List<Student> studentRoster = new ArrayList<>();
 		FileReader fr = new FileReader(fileName);
@@ -56,6 +58,7 @@ public class FileUtil {
 		
 		return studentRoster;
 	}
+
 	
 	
 	public static void writeTeacherToCSV(String fileName, List<List<String>> teacherArrays) throws IOException{
@@ -78,6 +81,7 @@ public class FileUtil {
 			ioe.printStackTrace();
 		}
 	}
+
 	
 	public static List<Teacher> readTeacherFromCSV(String fileName) throws IOException{
 		List<Teacher> teacherRoster = new ArrayList<>();
