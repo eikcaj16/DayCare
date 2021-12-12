@@ -1,23 +1,24 @@
 package edu.neu.csye6200.model;
 
 import java.time.*;
+import java.util.Date;
 import java.util.Map;
 
 public class Student extends Person {
 
-	private LocalDate immunizationDate;
-	private LocalDate registrationDate;
+	private Date immunizationDate;
+	private Date registrationDate;
 	private long studentId;
 
 	/**
 	 * 
 	 * @param immunizationDate
 	 */
-	public void setImmunizationDate(LocalDate immunizationDate) {
+	public void setImmunizationDate(Date immunizationDate) {
 		this.immunizationDate = immunizationDate;
 	}
 
-	public LocalDate getImmunizationDate() {
+	public Date getImmunizationDate() {
 		return this.immunizationDate;
 	}
 
@@ -25,11 +26,11 @@ public class Student extends Person {
 	 * 
 	 * @param registrationDate
 	 */
-	public void setRegistrationDate(LocalDate registrationDate) {
+	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
-	public LocalDate getRegistrationDate() {
+	public Date getRegistrationDate() {
 		return this.registrationDate;
 	}
 
@@ -53,8 +54,6 @@ public class Student extends Person {
 		s.setAge(Integer.parseInt(attributes[2]));
 		s.setAddress(attributes[3]);
 		s.setPhoneNum(Integer.parseInt(attributes[4]));
-		s.setImmunizationDate(LocalDate.parse(attributes[5]));
-		s.setRegistrationDate(LocalDate.parse(attributes[6]));
 		s.setStudentId(Integer.parseInt(attributes[7]));
 		
 		return s;

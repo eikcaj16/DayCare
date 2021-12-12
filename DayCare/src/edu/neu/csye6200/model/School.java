@@ -1,11 +1,16 @@
 package edu.neu.csye6200.model;
 
-import java.io.IOException;
+import edu.neu.csye6200.utils.DatabaseUtil;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
-import static edu.neu.csye6200.utils.FileUtil.*;
+import java.util.Objects;
 
 public class School extends AbstractSchool {
-    public static List<AbstractClassroom> classrooms;
+    public static List<AbstractClassroom> classrooms = new ArrayList<>();
 
     // TODO - Arrange enums into an appropriate place
     public enum StudentStatus {
@@ -39,11 +44,21 @@ public class School extends AbstractSchool {
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    public List<AbstractClassroom> getAllClassrooms() {
+        return classrooms;
+    }
+
+    @Override
+    public int getNumOfClassrooms() {
+        return classrooms.size();
+    }
+
     /**
      *
      */
-    public static AbstractClassroom addClassroom() {
-        AbstractClassroom classroom = new Classroom();
+    public static AbstractClassroom addClassroom(int type) {
+        AbstractClassroom classroom = new Classroom(type);
         classrooms.add(classroom);
         return classroom;
     }
@@ -62,9 +77,18 @@ public class School extends AbstractSchool {
         classrooms.stream().filter(c -> c.getClassroomId() == classroomId).forEach(c -> classrooms.remove(c));
     }
 
-    public static void init() throws IOException {
-        List<Student> students = readStudentFromCSV("resource/student_data.csv");
-        List<Teacher> teachers = readTeacherFromCSV("resource/teachers_data.csv");
+    public static void init() {
+        String sql = "SELECT COUNT(*) as num FROM student";
+        ResultSet rs = DatabaseUtil.getSQLResult(sql);
+        int stu_size = 0;
+        try{
+            if(Objects.requireNonNull(rs).next()) {
+                stu_size = rs.getInt("num");
+                System.out.printf("There are %d student", stu_size);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
 
         
     }

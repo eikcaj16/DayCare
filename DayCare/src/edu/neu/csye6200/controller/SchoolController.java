@@ -15,7 +15,7 @@ public class SchoolController {
 
     public List<AbstractClassroom> getAllClassrooms() { return model.getAllClassrooms(); }
 
-    public AbstractClassroom addClassroom() { return model.addClassroom(); }
+    public AbstractClassroom addClassroom(int type) { return model.addClassroom(type); }
 
     public void delClassroom(Classroom classroom) { model.delClassroom(classroom); }
 

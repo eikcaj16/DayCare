@@ -11,4 +11,8 @@ public abstract class AbstractSchool {
     public abstract void trackStudentRegistration();
 
     public abstract void trackAnnualEmployeeReview();
+
+    public abstract List<AbstractClassroom> getAllClassrooms();
+
+    public abstract int getNumOfClassrooms();
 }

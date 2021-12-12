@@ -41,7 +41,7 @@ public class Teacher extends Person {
 		t.setReview(Double.parseDouble(attributes[5]));
 		t.setEmployeeId(Integer.parseInt(attributes[6]));
 		
-		return s;
+		return t;
 	}
 
 }

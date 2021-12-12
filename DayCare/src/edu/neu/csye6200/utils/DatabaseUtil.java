@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.Objects;
 
 public class DatabaseUtil {
-    static final String RDS_HOSTNAME = "";
-    static final String RDS_PORT = "";
+    static final String RDS_HOSTNAME = "edu-neu-csye6200-daycare-rds-mysql.c3nsipkesvaj.us-east-2.rds.amazonaws.com";
+    static final String RDS_PORT = "3306";
     static final String RDS_DB_NAME = "day_care_db";
-    static final String RDS_USERNAME = "";
-    static final String RDS_PASSWORD = "";
+    static final String RDS_USERNAME = "admin";
+    static final String RDS_PASSWORD = "daycare1129_";
 
     enum DataType {
         STRING,
@@ -74,7 +74,7 @@ public class DatabaseUtil {
         return null;
     }
 
-    static Connection getRemoteConnection() {
+    public static Connection getRemoteConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String jdbcUrl =
@@ -96,7 +96,7 @@ public class DatabaseUtil {
         }
     }
 
-    static void executeSQL(String sql) {
+    public static void executeSQL(String sql) {
         try {
             Statement stmt = Objects.requireNonNull(getRemoteConnection()).createStatement();
             stmt.executeUpdate(sql);
@@ -133,8 +133,6 @@ public class DatabaseUtil {
         createTable(tableName, keys, primaryKey, null);
     }
 
-
-
     static void dropTable(String tableName) {
         try {
             Statement stmt = Objects.requireNonNull(getRemoteConnection()).createStatement();
@@ -152,6 +150,18 @@ public class DatabaseUtil {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static ResultSet getSQLResult(String sql){
+        Connection con = DatabaseUtil.getRemoteConnection();
+        try {
+            assert con != null;
+            Statement state = con.createStatement();
+            return state.executeQuery(sql);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static void main(String[] args) {

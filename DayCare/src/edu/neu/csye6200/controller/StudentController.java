@@ -3,6 +3,7 @@ package edu.neu.csye6200.controller;
 import edu.neu.csye6200.model.Student;
 
 import java.time.*;
+import java.util.Date;
 
 public class StudentController {
 	private Student model;
@@ -11,19 +12,19 @@ public class StudentController {
 		this.model = model;
 	}
 	
-	public void setImmunizationDate(LocalDate immunizationDate) {
+	public void setImmunizationDate(Date immunizationDate) {
 		model.setImmunizationDate(immunizationDate);
 	}
 
-	public LocalDate getImmunizationDate() {
+	public Date getImmunizationDate() {
 		return model.getImmunizationDate();
 	}
 
-	public void setRegistrationDate(LocalDate registrationDate) {
+	public void setRegistrationDate(Date registrationDate) {
 		model.setRegistrationDate(registrationDate);
 	}
 
-	public LocalDate getRegistrationDate() {
+	public Date getRegistrationDate() {
 		return model.getRegistrationDate();
 	}
 	
