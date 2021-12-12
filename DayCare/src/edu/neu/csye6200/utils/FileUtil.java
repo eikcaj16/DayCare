@@ -12,11 +12,10 @@ import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Teacher;
 
 public class FileUtil {
-	public static List<Student> readStudentFromCSV(String fileName) throws IOException{
+	public static List<Student> readStudentFromCSV(String fileName){
 		List<Student> studentRoster = new ArrayList<>();
-		FileReader fr = new FileReader(fileName);
 		
-		try (BufferedReader br = new BufferedReader(fr)) {
+		try (FileReader fr = new FileReader(fileName); BufferedReader br = new BufferedReader(fr)) {
 			
 			String line = br.readLine();
 			
@@ -36,11 +35,10 @@ public class FileUtil {
 		return studentRoster;
 	}
 	
-	public static List<Teacher> readTeacherFromCSV(String fileName) throws IOException{
+	public static List<Teacher> readTeacherFromCSV(String fileName){
 		List<Teacher> teacherRoster = new ArrayList<>();
-		FileReader fr = new FileReader(fileName);
 		
-		try (BufferedReader br = new BufferedReader(fr)) {
+		try (FileReader fr = new FileReader(fileName); BufferedReader br = new BufferedReader(fr)) {
 			
 			String line = br.readLine();
 			

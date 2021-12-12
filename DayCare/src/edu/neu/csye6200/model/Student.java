@@ -1,7 +1,6 @@
 package edu.neu.csye6200.model;
 
 import java.time.*;
-import java.util.Map;
 
 import edu.neu.csye6200.utils.ConversionHelper;
 
@@ -10,12 +9,6 @@ public class Student extends Person {
 	private LocalDate immunizationDate;
 	private LocalDate registrationDate;
 	private long studentId;
-	
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> e1cd1690a046cd827307fb300691d1190414a3c7
 	/**
 	 * 
 	 * @param immunizationDate

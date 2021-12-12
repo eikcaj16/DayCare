@@ -1,10 +1,7 @@
 package edu.neu.csye6200.model;
 
-<<<<<<< HEAD
-=======
 import edu.neu.csye6200.utils.ConversionHelper;
 
->>>>>>> e1cd1690a046cd827307fb300691d1190414a3c7
 public class Teacher extends Person {
 
 	private double review;
@@ -33,8 +30,6 @@ public class Teacher extends Person {
 	public long getEmployeeId() {
 		return this.employeeId;
 	}
-<<<<<<< HEAD
-=======
 	
 	public static Teacher createTeacher(String[] attributes) {
 		ConversionHelper convHelp = new ConversionHelper();
@@ -49,6 +44,5 @@ public class Teacher extends Person {
 		
 		return t;
 	}
->>>>>>> e1cd1690a046cd827307fb300691d1190414a3c7
 
 }

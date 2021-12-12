@@ -1,10 +1,13 @@
 package edu.neu.csye6200.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class School extends AbstractSchool {
 	
-	private List<AbstractClassroom> classrooms;
+	public static List<AbstractClassroom> classrooms;
+	public static List<Student> students = new ArrayList<>();
+	public static List<Teacher> teachers = new ArrayList<>();
 
 	public void trackStudentEnrollment() {
 		// TODO - implement AbstractSchool.trackStudentEnrollment

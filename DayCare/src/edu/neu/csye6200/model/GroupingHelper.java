@@ -5,23 +5,19 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.stream.Collectors;
 
+import edu.neu.csye6200.utils.FileUtil;
+import static edu.neu.csye6200.model.School.students;
+import static edu.neu.csye6200.model.School.teachers;
+
 public class GroupingHelper {
 	
 	static String studentfile = "students.csv";
 	static String teachersfile = "teachers.csv";
-	static List<Student> students = new ArrayList<>();
-	static List<Teacher> teachers = new ArrayList<>();
-
 	
 	public static void groupMe() {
-		
-		students.clear();
-		teachers.clear();
-		List<String> studentList = FileUtil.readTextFile(studentfile);
-		studentList.forEach(student -> students.add(new Student(student)));
-	
-		List<String> tempTeachers = FileUtil.readTextFile(teachersfile);
-		tempTeachers.forEach(teacher -> teachers.add(new Teacher(teacher)));
+
+		students = FileUtil.readStudentFromCSV(studentfile);
+		teachers = FileUtil.readTeacherFromCSV(teachersfile);
 	
 		List<Student> sixToTwelve = students.stream().filter(student -> student.getAge() >= 6 && student.getAge() <= 12).collect(Collectors.toList());
 		List<Student> thirteenToTwentyfour = students.stream().filter(student -> student.getAge() >= 13 && student.getAge() <= 24).collect(Collectors.toList());
@@ -78,7 +74,7 @@ public class GroupingHelper {
 
 		}
 		
-		parseAddTeacher(teachers, Daycare.getClassroom());		
+		parseAddTeacher(teachers, School.classrooms);		
 		
 	}
 	
@@ -99,7 +95,7 @@ public class GroupingHelper {
 			groups.add(GroupFactory.getInstance().getObject());
 			for(int j = 0; j < size; j++) {
 				if((temp+j)<studs.size()) {
-					groups.get(i).addStudents(studs.get(temp+j));
+					groups.get(i).addStudent(studs.get(temp+j));
 				}	
 			}
 			temp = temp + size;
@@ -122,21 +118,20 @@ public class GroupingHelper {
 			classes.add(ClassroomFactory.getInstance().getObject());
 			for(int j = 0; j < classSize; j++) {
 				if((tempC+j) < groups.size()) {
-					classes.get(i).addGroups(groups.get(tempC + j));
+					classes.get(i).addGroup(groups.get(tempC + j));
 				}
 			}
 			
 			tempC = tempC + classSize;
 		}
 		
-		classes.forEach(c -> School(c));
-		
+		School.classrooms.addAll(classes);
 	}
 	
 	
-	public static void parseAddTeacher(List<Teacher> t, List<Classroom> c) {
+	public static void parseAddTeacher(List<Teacher> t, List<AbstractClassroom> classrooms) {
 		int currTF = 0;
-		for(Classroom cl : c) {
+		for(AbstractClassroom cl : classrooms) {
 			for(Group g : cl.getAllGroups()) {
 				g.setTeacher(t.get(currTF));
 				System.out.println("i am  in parseaddteacher");
