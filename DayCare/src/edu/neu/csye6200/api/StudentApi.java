@@ -9,35 +9,41 @@ import java.util.List;
 
 public class StudentApi extends AbstractStudent {
 
+    @Override
     public int getNumOfStudents() {
         return 0;
     }
 
+    @Override
     public List<Student> getAllStudents() {
         return new ArrayList<>();
     }
 
+    @Override
     public void addStudent(Student student) {
 
     }
 
+    @Override
+    public void updateStudent(Student student) {
+
+    }
+
+    @Override
     public void delStudent(Student student) {
 
     }
 
+    @Override
     public void delStudent(long studentId) {
 
-    }
-
-    public long getStudentId() {
-        return 0;
     }
 
     public void setImmunizationDate(Date immunizationDate) {
 
     }
 
-    public Date getImmunizationDate() {
+    public Date getImmunizationDate(long studentId) {
         return null;
     }
 
@@ -45,7 +51,7 @@ public class StudentApi extends AbstractStudent {
 
     }
 
-    public Date getRegistrationDate() {
+    public Date getRegistrationDate(long studentId) {
         return null;
     }
 }

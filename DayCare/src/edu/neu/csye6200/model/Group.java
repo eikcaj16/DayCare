@@ -1,8 +1,6 @@
 package edu.neu.csye6200.model;
 
-import edu.neu.csye6200.api.abstractClass.AbstractGroup;
-
-public class Group extends AbstractGroup {
+public class Group {
 
 	private long teacher_id;
 	private int  student_num;
@@ -20,28 +18,4 @@ public class Group extends AbstractGroup {
 		this.groupId = 0;
 	}
 
-	public long getTeacher() {
-		return this.teacher_id;
-	}
-
-	public void setTeacher(long teacherId) {
-		this.teacher_id = teacherId;
-	}
-
-	// TODO : required 
-	public int getGroupId() {
-		return 0;
-	}
-
-	public void addStudent(long studentId) {
-		student_num++;
-	}
-
-	public void delStudent(long studentId) {
-		student_num--;
-	}
-
-	public int getNumOfStudents() {
-		return student_num;
-	}
 }

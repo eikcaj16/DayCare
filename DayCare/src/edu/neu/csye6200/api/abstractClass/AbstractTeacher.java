@@ -10,17 +10,21 @@ public abstract class AbstractTeacher {
 
     /**
      *
-     * @param teacherId
-     * @return
+     * @param teacher
      */
-    public abstract boolean addTeacher(long teacherId);
+    public abstract void addTeacher(Teacher teacher);
 
+    public abstract void updateTeacher(Teacher teacher);
+    /**
+     *
+     * @param teacher
+     */
+    public abstract void delTeacher(Teacher teacher);
     /**
      *
      * @param teacherId
-     * @return
      */
-    public abstract boolean delTeacher(long teacherId);
+    public abstract void delTeacher(long teacherId);
 
     public abstract int getNumOfTeachers();
 

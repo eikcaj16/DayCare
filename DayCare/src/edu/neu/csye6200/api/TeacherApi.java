@@ -7,35 +7,34 @@ import java.util.List;
 
 public class TeacherApi extends AbstractTeacher {
 
+    @Override
     public int getNumOfTeachers() {
         return 0;
     }
 
+    @Override
     public List<Teacher> getAllTeachers() {
         return null;
     }
 
+    @Override
     public void addTeacher(Teacher teacher) {
 
     }
 
+    @Override
+    public void updateTeacher(Teacher teacher) {
+
+    }
+
+    @Override
     public void delTeacher(Teacher teacher) {
 
     }
 
+    @Override
     public void delTeacher(long teacherId) {
 
     }
 
-    public void setReview(double review) {
-
-    }
-
-    public double getReview() {
-        return 0;
-    }
-
-    public long getTeacherId() {
-        return 0;
-    }
 }

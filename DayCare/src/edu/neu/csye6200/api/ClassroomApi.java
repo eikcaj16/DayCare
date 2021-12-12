@@ -1,23 +1,31 @@
 package edu.neu.csye6200.api;
 
 import edu.neu.csye6200.api.abstractClass.AbstractClassroom;
-import edu.neu.csye6200.model.Group;
+import edu.neu.csye6200.model.Classroom;
 
 import java.util.List;
 
 public class ClassroomApi extends AbstractClassroom {
 
     @Override
-    public int getClassroomId() {
+    public int getClassroomIdByStudentId(long studentId) {
         return 0;
     }
 
     @Override
-    public List<Group> getAllGroups() {
+    public int getClassroomIdByTeacherId(long teacherId) {
+        return 0;
+    }
+
+    @Override
+    public List<Classroom> getAllClassrooms() {
         return null;
     }
 
-    public int getNumOfGroups() {
+
+
+    @Override
+    public int getNumOfClassrooms() {
         return 0;
     }
 }

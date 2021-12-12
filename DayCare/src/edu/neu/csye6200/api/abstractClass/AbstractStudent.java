@@ -13,13 +13,17 @@ public abstract class AbstractStudent {
 	/**
 	 * add a student to classroom according to rules
 	 * - set the classroom_id of Student table in database
-	 * @param studentId a student id
+	 * @param student a student object
 	 */
-	public abstract boolean addStudent(long studentId);
+	public abstract void addStudent(Student student);
+
+	public abstract void updateStudent(Student student);
+
+	public abstract void delStudent(Student student);
 
 	/**
 	 * delete a student from classroom
 	 * @param studentId a student id
 	 */
-	public abstract boolean delStudent(long studentId);
+	public abstract void delStudent(long studentId);
 }

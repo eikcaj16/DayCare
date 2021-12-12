@@ -18,10 +18,11 @@ public class GroupApi extends AbstractGroup {
     }
 
     @Override
-    public void delGroup(Group group) {
+    public void updatedGroup(Group group) {
+
     }
 
     @Override
-    public void delGroup(int groupId) {
+    public void delGroup(Group group) {
     }
 }

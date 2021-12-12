@@ -9,7 +9,7 @@ public abstract class AbstractGroup {
 
 	public abstract void addGroup(Group group);
 
-	public abstract void delGroup(Group group);
+	public abstract void updatedGroup(Group group);
 
-	public abstract void delGroup(int groupId);
+	public abstract void delGroup(Group group);
 }
