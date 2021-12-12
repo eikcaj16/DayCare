@@ -2,80 +2,44 @@ package edu.neu.csye6200.model;
 
 import java.util.*;
 
-abstract class AbstractClassroom {
+public abstract class AbstractClassroom {
 
-	abstract int getClassroomId();
+	public abstract int getClassroomId();
+
+	public abstract int getNumOfStudents();
+
+	public abstract List<Student> getAllStudents();
 
 	/**
-	 * 
-	 * @param id
+	 * add a student to classroom according to rules
+	 * - set the classroom_id of Student table in database
+	 * @param studentId a student id
 	 */
-	abstract void setClassroomId(int id);
-
-	abstract int getNumOfStudents();
-
-	abstract List<Student> getAllStudents();
+	public abstract boolean addStudent(long studentId);
 
 	/**
-	 * 
-	 * @param student
+	 * delete a student from classroom
+	 * @param studentId a student id
 	 */
-	abstract void addStudent(Student student);
+	public abstract boolean delStudent(long studentId);
+
+	public abstract int getNumOfTeachers();
+
+	public abstract List<Teacher> getAllTeachers();
 
 	/**
-	 * 
-	 * @param student
-	 */
-	abstract void delStudent(Student student);
-
-	/**
-	 * 
-	 * @param studentId
-	 */
-	abstract void delStudent(long studentId);
-
-	abstract int getNumOfTeachers();
-
-	abstract List<Teacher> getAllTeachers();
-
-	/**
-	 * 
-	 * @param teacher
-	 */
-	abstract void addTeacher(Teacher teacher);
-
-	/**
-	 * 
-	 * @param teacher
-	 */
-	abstract void delTeacher(Teacher teacher);
-
-	/**
-	 * 
+	 *
 	 * @param teacherId
+	 * @return
 	 */
-	abstract void delTeacher(long teacherId);
+	public abstract boolean addTeacher(long teacherId);
 
-	abstract int getNumOfGroups();
+	/**
+	 *
+   * @param teacherId
+   * @return
+   */
+	public abstract boolean delTeacher(long teacherId);
 
 	abstract List<Group> getAllGroups();
-
-	/**
-	 * 
-	 * @param teacher
-	 */
-	abstract void addGroup(Group grp);
-
-	/**
-	 * 
-	 * @param group
-	 */
-	abstract void delGroup(Group group);
-
-	/**
-	 * 
-	 * @param groupId
-	 */
-	abstract void delGroup(int groupId);
-
 }
