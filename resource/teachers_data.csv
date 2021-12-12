@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 FirstName,LastName,Age(month),Address,PhoneNum,review,employeeId
 Elizabeth,Jesus,418,Mae Ave 428,781500289,0.0,3000002
 Keshawn,Pontius,486,Tami Ave 80,781500666,0.0,3000007
@@ -49,3 +50,36 @@ Kandace,Pearle,440,Sinclair Ave 499,781522096,0.0,3000280
 Henderson,Melody,593,Pennye Ave 395,781522876,0.0,3000290
 Nandag,Talen,555,Wendelle Ave 496,781522885,0.0,3000294
 Tarin,Alisha,469,Darrin Ave 349,781523871,0.0,3000297
+=======
+teacherId,classroom_id,group_id,FirstName,LastName,DateOfBirth,Address,parent_name,PhoneNum,rating
+3000004,,,Ali,Fluellen,1991-3-12,"141 Ilene Street, Boston",King,781898568,0.0
+3000007,,,Verlie,Carolyn,1980-7-25,"96 Erick Street, Boston",Hartman,781295082,0.0
+3000015,,,Iddo,Nathen,1979-11-1,"143 Potipherah Road, Boston",Tanna,781733089,0.0
+3000019,,,Yancie,Dewitt,1978-3-28,"334 Georgeanne Street, Boston",Isra,781822034,0.0
+3000025,,,Rene,Yarwood,1987-3-26,"262 Ben Street, Boston",Diantha,781677930,0.0
+3000027,,,Iris,Nikki,1978-2-18,"100 Rayford Road, Boston",Tiberius,781315219,0.0
+3000035,,,Linda,Ronny,1986-10-28,"120 Ursa Road, Boston",Zakkoree,781029593,0.0
+3000036,,,Helin,Meli,1992-3-24,"80 Penney Street, Boston",Sonny,781299725,0.0
+3000046,,,Claude,Holmes,1970-12-12,"348 Kenneth Road, Boston",Nandy,781849946,0.0
+3000057,,,Vanya,Camlin,1993-2-3,"42 Emilio Ave, Boston",Handy,781556584,0.0
+3000061,,,Beatrice,Geneva,1974-1-6,"192 Isidore Road, Boston",Lea,781592574,0.0
+3000062,,,Windie,Deka,1981-9-2,"13 Gabriel Road, Boston",Inis,781454200,0.0
+3000068,,,Weaver,Dalila,1974-7-23,"284 Fisseha Ave, Boston",Ida,781136981,0.0
+3000074,,,Irving,Nikos,1970-8-25,"111 Rebecca Road, Boston",Tim,781167165,0.0
+3000080,,,Talisha,Alenna,1991-4-24,"241 Danielle Road, Boston",Florenca,781469927,0.0
+3000082,,,Kiona,Quillan,1974-1-19,"335 Tena Ave, Boston",Willie,781443461,0.0
+3000088,,,Vi,Caspar,1984-7-24,"253 Erskine Ave, Boston",Hayes,781032502,0.0
+3000094,,,Romeo,Zaira,1981-8-4,"144 Bobbye Street, Boston",Elijah,781944617,0.0
+3000097,,,Elmore,Joanna,1977-1-3,"143 Marc Street, Boston",Osmin,781514174,0.0
+3000098,,,Dewitt,Isra,1991-2-14,"159 Leatrice Road, Boston",Obharnait,781867899,0.0
+3000099,,,Fatimah,Karyn,1994-8-28,"68 Mercedes Ave, Boston",Perdita,781255505,0.0
+3000110,,,Blanche,Glenda,1970-8-13,"233 Jeffrey Ave, Boston",Lita,781350261,0.0
+3000121,,,Inglebert,Nicklaus,1976-1-15,"484 Ramsay Road, Boston",Theola,781471393,0.0
+3000124,,,Inga,Nicholaus,1995-5-21,"322 Raleigh Road, Boston",Theo,781251921,0.0
+3000125,,,Nari,Tamala,1985-12-15,"29 Wesley Street, Boston",Alexandra,781081467,0.0
+3000130,,,Fenton,Keefe,1991-10-12,"339 Mikko Ave, Boston",Pheobe,781709386,0.0
+3000131,,,Bjorn,Gizi,1973-4-26,"397 Jeb Road, Boston",Linus,781826385,0.0
+3000135,,,Ned,Tasmine,1989-12-16,"381 Wilburn Road, Boston",Alize,781510997,0.0
+3000144,,,Lanford,Ransom,1975-12-19,"186 Thurlow Road, Boston",Xanthia,781515259,0.0
+3000150,,,Danica,Igdaliah,1990-10-7,"152 Kieran Road, Boston",Nedra,781876496,0.0
+>>>>>>> 19797caa59c76ed85b0db15bf7504c5b5c0211a4

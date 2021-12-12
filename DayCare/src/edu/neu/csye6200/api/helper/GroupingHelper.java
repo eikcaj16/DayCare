@@ -1,13 +1,15 @@
-package edu.neu.csye6200.model;
+package edu.neu.csye6200.api.helper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.stream.Collectors;
 
+import edu.neu.csye6200.api.abstractClass.AbstractClassroom;
+import edu.neu.csye6200.api.factory.ClassroomFactory;
+import edu.neu.csye6200.api.factory.GroupFactory;
+import edu.neu.csye6200.model.*;
 import edu.neu.csye6200.utils.FileUtil;
-import static edu.neu.csye6200.model.School.students;
-import static edu.neu.csye6200.model.School.teachers;
 
 public class GroupingHelper {
 	
@@ -74,7 +76,7 @@ public class GroupingHelper {
 
 		}
 		
-		parseAddTeacher(teachers, School.classrooms);		
+		parseAddTeacher(teachers, School.classrooms);
 		
 	}
 	

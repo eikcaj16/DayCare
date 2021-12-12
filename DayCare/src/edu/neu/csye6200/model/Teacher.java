@@ -1,7 +1,5 @@
 package edu.neu.csye6200.model;
 
-import edu.neu.csye6200.utils.ConversionHelper;
-
 public class Teacher extends Person {
 
 	private double review;
@@ -32,16 +30,14 @@ public class Teacher extends Person {
 	}
 	
 	public static Teacher createTeacher(String[] attributes) {
-		ConversionHelper convHelp = new ConversionHelper();
 		Teacher t = new Teacher();
 		t.setFirstName(attributes[0]);
 		t.setLastName(attributes[1]);
-		t.setAge((int)(convHelp.stringToInt(attributes[2])/12));
+		t.setAge(Integer.parseInt(attributes[2]));
 		t.setAddress(attributes[3]);
-		t.setPhoneNum(convHelp.stringToLong(attributes[4]));
-		t.setReview(convHelp.stringToDouble(attributes[5]));
-		t.setEmployeeId(convHelp.stringToLong(attributes[6]));
-		
+		t.setPhoneNum(Integer.parseInt(attributes[4]));
+		t.setReview(Double.parseDouble(attributes[5]));
+		t.setEmployeeId(Integer.parseInt(attributes[6]));		
 		return t;
 	}
 

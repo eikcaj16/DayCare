@@ -1,4 +1,6 @@
-package edu.neu.csye6200.model;
+package edu.neu.csye6200.api.factory;
+
+import edu.neu.csye6200.model.Classroom;
 
 public class ClassroomFactory {
 	

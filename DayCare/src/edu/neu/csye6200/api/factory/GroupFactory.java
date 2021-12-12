@@ -1,4 +1,6 @@
-package edu.neu.csye6200.model;
+package edu.neu.csye6200.api.factory;
+
+import edu.neu.csye6200.model.Group;
 
 public class GroupFactory {
 	
@@ -17,5 +19,4 @@ public class GroupFactory {
 	public Group getObject() {
 		return new Group();
 	}
-
 }

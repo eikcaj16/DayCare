@@ -1,5 +1,7 @@
 package edu.neu.csye6200.model;
 
+import edu.neu.csye6200.api.abstractClass.AbstractPerson;
+
 public class Person extends AbstractPerson {
 	
 	private String firstName;
