@@ -96,7 +96,7 @@ public class StudentApi extends AbstractStudent {
             studentDao.updateStudent(dbStudent);
         }else{
             //TODO: Add new student to db
-//            studentDao.addStudentToDb(student);
+            studentDao.addStudentToDb(student);
         }
 
     }

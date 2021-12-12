@@ -7,9 +7,14 @@ import java.sql.ResultSet;
 
 public class StudentDao {
 
-//    public ResultSet addStudentToDb(Student student){
-//
-//    }
+    public void addStudentToDb(Student student){
+        String sql = "INSERT INTO student (student_id, first_name, last_name, address, date_of_birth, parent_name, email, reg_date, phone_no, classroom_id, group_id, rating) " +
+                "VALUES(" + student.getStudentId() + student.getFirstName() + student.getLastName() + student.getAddress() +
+                student.getDateOfBirth() + student.getParentName() + student.getPhoneNum() + student.getEmail() +
+                student.getRegistrationDate() + student.getClassroomId() + student.getGroupId() + student.getRating() + ");";
+        DatabaseUtil.executeSQL(sql);
+
+    }
 
     public void updateStudent(Student student){
         String sql = "UPDATE student " + "SET first_name = " + student.getFirstName() +

@@ -6,20 +6,11 @@ import java.util.Date;
 
 public class Student extends Person {
 
-	private String immunizationDate;
 	private String registrationDate;
 	private int classroomId;
 	private int groupId;
 	private double rating;
 	private long studentId;
-
-	public String getImmunizationDate() {
-		return immunizationDate;
-	}
-
-	public void setImmunizationDate(String immunizationDate) {
-		this.immunizationDate = immunizationDate;
-	}
 
 	public String getRegistrationDate() {
 		return registrationDate;
@@ -60,7 +51,5 @@ public class Student extends Person {
 	public void setStudentId(long studentId) {
 		this.studentId = studentId;
 	}
-
-
 
 }
