@@ -1,38 +1,72 @@
 package edu.neu.csye6200.model;
 
+import java.util.List;
+
 public class Group extends AbstractGroup{
 
-	private long teacher_id;
-	private int  student_num;
-	private final int groupId;
-
-	public Group(int id){
-		student_num = 0;
-		teacher_id = -1;
-		this.groupId = id;
+	private Teacher teacher;
+	private List<Student> students;
+	private int groupId;
+	
+	public Teacher getTeacher() {
+		return this.teacher;
 	}
 
-	public long getTeacher() {
-		return this.teacher_id;
+	/**
+	 * 
+	 * @param teacher
+	 */
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
-	public void setTeacher(long teacherId) {
-		this.teacher_id = teacherId;
+	public List<Student> getAllStudents() {
+		// TODO - implement AbstractGroup.getAllStudents
+		return students.stream().sorted().toList();
 	}
 
 	public int getGroupId() {
 		return this.groupId;
 	}
 
-	public void addStudent(long studentId) {
-		student_num++;
+	/**
+	 * 
+	 * @param groupId
+	 */
+	protected void setGroupId(int groupId) {
+		this.groupId = groupId;
 	}
 
+	/**
+	 * 
+	 * @param student
+	 */
+	public void addStudent(Student student) {
+		// TODO - implement AbstractGroup.addStudent
+		students.add(student);
+	}
+
+	/**
+	 * 
+	 * @param student
+	 */
+	public void delStudent(Student student) {
+		// TODO - implement AbstractGroup.delStudent
+		students.add(student);
+	}
+
+	/**
+	 * 
+	 * @param studentId
+	 */
 	public void delStudent(long studentId) {
-		student_num--;
+		// TODO - implement AbstractGroup.delStudent
+		throw new UnsupportedOperationException();
 	}
 
 	public int getNumOfStudents() {
-		return student_num;
+		// TODO - implement AbstractGroup.getNumOfStudents
+		return students.size();
 	}
+
 }

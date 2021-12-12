@@ -3,30 +3,42 @@ package edu.neu.csye6200.model;
 import java.util.*;
 abstract class AbstractGroup {
 
-	public long getTeacher() {
-		return 0;
-	}
+	abstract Teacher getTeacher();
 
 	/**
 	 * 
-	 * @param teacherId
+	 * @param teacher
 	 */
-	public abstract void setTeacher(long teacherId);
+	abstract void setTeacher(Teacher teacher);
 
-	public abstract int getGroupId();
+	abstract List<Student> getAllStudents();
+
+	abstract int getGroupId();
 
 	/**
-	 *
-	 * @param studentId
+	 * 
+	 * @param groupId
 	 */
-	public abstract void addStudent(long studentId);
+	abstract void setGroupId(int groupId);
 
+	/**
+	 * 
+	 * @param student
+	 */
+	abstract void addStudent(Student student);
+
+	/**
+	 * 
+	 * @param student
+	 */
+	abstract void delStudent(Student student);
 
 	/**
 	 * 
 	 * @param studentId
 	 */
-	public abstract void delStudent(long studentId);
+	abstract void delStudent(long studentId);
 
-	public abstract int getNumOfStudents();
+	abstract int getNumOfStudents();
+
 }

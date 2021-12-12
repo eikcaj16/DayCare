@@ -1,95 +1,66 @@
 package edu.neu.csye6200.model;
 
-import edu.neu.csye6200.utils.DatabaseUtil;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class School extends AbstractSchool {
-    public static List<AbstractClassroom> classrooms = new ArrayList<>();
+	
+	private List<AbstractClassroom> classrooms;
 
-    // TODO - Arrange enums into an appropriate place
-    public enum StudentStatus {
-        enrolled,
-        alumni
-    }
+	public void trackStudentEnrollment() {
+		// TODO - implement AbstractSchool.trackStudentEnrollment
+		throw new UnsupportedOperationException();
+	}
 
-    public enum ImmunizationStatus {
-        noRecord,
-        active,
-        expired
-    }
+	public void trackStudentImmunization() {
+		// TODO - implement AbstractSchool.trackStudentImmunization
+		throw new UnsupportedOperationException();
+	}
 
-    public void trackStudentEnrollment() {
-        // TODO - implement AbstractSchool.trackStudentEnrollment
-        throw new UnsupportedOperationException();
-    }
+	public void trackStudentRegistration() {
+		// TODO - implement AbstractSchool.trackStudentRegistration
+		throw new UnsupportedOperationException();
+	}
 
-    public void trackStudentImmunization() {
-        // TODO - implement AbstractSchool.trackStudentImmunization
-        throw new UnsupportedOperationException();
-    }
+	public void trackAnnualEmployeeReview() {
+		// TODO - implement AbstractSchool.trackAnnualEmployeeReview
+		throw new UnsupportedOperationException();
+	}
 
-    public void trackStudentRegistration() {
-        // TODO - implement AbstractSchool.trackStudentRegistration
-        throw new UnsupportedOperationException();
-    }
+	public int getNumOfClassrooms() {
+		// TODO - implement AbstractSchool.getNumOfClassrooms
+		return classrooms.size();
+	}
 
-    public void trackAnnualEmployeeReview() {
-        // TODO - implement AbstractSchool.trackAnnualEmployeeReview
-        throw new UnsupportedOperationException();
-    }
+	public List<AbstractClassroom> getAllClassrooms() {
+		// TODO - implement AbstractSchool.getAllClassrooms
+		return classrooms.stream().sorted().toList();
+	}
 
-    @Override
-    public List<AbstractClassroom> getAllClassrooms() {
-        return classrooms;
-    }
+	/**
+	 * 
+	 * @param classroomId
+	 */
+	public void addClassroom(Classroom classroom) {
+		// TODO - implement AbstractSchool.addClassroom
+		classrooms.add(classroom);
+	}
 
-    @Override
-    public int getNumOfClassrooms() {
-        return classrooms.size();
-    }
+	/**
+	 * 
+	 * @param classroom
+	 */
+	public void delClassroom(Classroom classroom) {
+		// TODO - implement AbstractSchool.delClassroom
+		classrooms.remove(classroom);
+	}
 
-    /**
-     *
-     */
-    public static AbstractClassroom addClassroom(int type) {
-        AbstractClassroom classroom = new Classroom(type);
-        classrooms.add(classroom);
-        return classroom;
-    }
+	/**
+	 * 
+	 * @param classroomId
+	 */
+	public void delClassroom(int classroomId) {
+		// TODO - implement AbstractSchool.delClassroom
+		throw new UnsupportedOperationException();
+	}
 
-    /**
-     * @param classroom
-     */
-    public static void delClassroom(Classroom classroom) {
-        classrooms.remove(classroom);
-    }
-
-    /**
-     * @param classroomId
-     */
-    public static void delClassroom(int classroomId) {
-        classrooms.stream().filter(c -> c.getClassroomId() == classroomId).forEach(c -> classrooms.remove(c));
-    }
-
-    public static void init() {
-        String sql = "SELECT COUNT(*) as num FROM student";
-        ResultSet rs = DatabaseUtil.getSQLResult(sql);
-        int stu_size = 0;
-        try{
-            if(Objects.requireNonNull(rs).next()) {
-                stu_size = rs.getInt("num");
-                System.out.printf("There are %d student", stu_size);
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-
-        
-    }
 }

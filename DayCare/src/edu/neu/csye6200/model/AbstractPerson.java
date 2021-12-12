@@ -36,6 +36,7 @@ abstract class AbstractPerson {
 	/**
 	 * 
 	 * @param phoneNum
+	 * @param parameter
 	 */
 	abstract void setPhoneNum(long phoneNum);
 
