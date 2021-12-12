@@ -1,5 +1,7 @@
 package edu.neu.csye6200.model;
 
+import edu.neu.csye6200.api.abstractClass.AbstractClassroom;
+import edu.neu.csye6200.api.abstractClass.AbstractStudent;
 import edu.neu.csye6200.utils.DatabaseUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,7 +41,6 @@ public class Classroom {
 		this.groups = null;
 	}
 
-	@Override
 	public int getNumOfStudents() {
 //		Connection con = DatabaseUtil.getRemoteConnection();
 //		try {
@@ -63,7 +64,6 @@ public class Classroom {
 		return student_num;
 	}
 
-	@Override
 	public List<Student> getAllStudents() {
 		// TODO - implement AbstractClassroom.getAllStudents
 		String sql = "SELECT * FROM student "
@@ -94,68 +94,12 @@ public class Classroom {
 	 * - set the classroom_id of Student table in database
 	 * @param studentId a student id
 	 */
-	@Override
-	public boolean addStudent(long studentId) {
-		if(student_num >= AllGroupSize[classroom_type] * AllGroupNum[classroom_type]){
-			System.out.println("The class room is full!");
-			return false;
-		}
-
-		// Query the student info from database and cal the age
-		String sql = "SELECT * FROM student "
-				+ "WHERE STUDENT_ID = "  + studentId;
-		ResultSet rs = DatabaseUtil.getSQLResult(sql);
-		int age = 0;
-		try{
-			if(Objects.requireNonNull(rs).next()) {
-				 String birthdate = rs.getString("date_of_birth");
-				 age = calAge(birthdate);
-			}
-			else{
-				System.out.println("This student id not exist!");
-				return false;
-			}
-		} catch (SQLException e){
-			e.printStackTrace();
-		}
-
-		//Check if the student age fit this classroom
-		if(age >= AllMinAge[classroom_type] && age <= AllMaxAge[classroom_type]){
-			// Assign student to a group
-			int assign_group_id = -1;
-			for(Group g: groups){
-				if(g.getNumOfStudents() < AllGroupSize[classroom_type]){
-					g.addStudent(studentId);
-					assign_group_id = g.getGroupId();
-					break;
-				}
-			}
-			if(assign_group_id == -1){
-				System.out.println("The class room is full!");
-				return false;
-			}
-
-			//Update classroom id of the student in database
-			sql = "UPDATE student " +
-					"SET classroom_id = " + classroomId +
-					", group_id = " + assign_group_id +
-					" WHERE student_id = " + studentId;
-			DatabaseUtil.executeSQL(sql);
-			System.out.println("Add success!");
-			student_num++;
-			return true;
-		}
-		else{
-			System.out.println("Student age is not fit!");
-			return false;
-		}
-	}
 
 	/**
 	 * delete a student from classroom
 	 * @param studentId a student id
 	 */
-	@Override
+
 	public boolean delStudent(long studentId) {
 		String sql = "SELECT * FROM student "
 				+ "WHERE STUDENT_ID = "  + studentId;
@@ -189,12 +133,10 @@ public class Classroom {
 		return true;
 	}
 
-	@Override
 	public int getNumOfTeachers() {
 		return teacher_num;
 	}
 
-	@Override
 	public List<Teacher> getAllTeachers() {
 		// TODO - implement AbstractClassroom.getAllTeachers
 		return null;
@@ -205,7 +147,7 @@ public class Classroom {
 	 * @param teacherId
 	 * @return
 	 */
-	@Override
+
 	public boolean addTeacher(long teacherId) {
 		if(teacher_num > AllGroupNum[classroom_type]){
 			System.out.println("The classroom is full!");
@@ -250,7 +192,7 @@ public class Classroom {
 	 * @param teacherId
 	 * @return
 	 */
-	@Override
+
 	public boolean delTeacher(long teacherId) {
 		String sql = "SELECT * FROM teacher WHERE teacher_id = " + teacherId;
 		ResultSet rs = DatabaseUtil.getSQLResult(sql);
@@ -283,16 +225,8 @@ public class Classroom {
 		return false;
 	}
 
-	@Override
 	public List<Group> getAllGroups() {
 		return groups;
 	}
 
-	int calAge(String birthdate){
-		String[] date = birthdate.split("-");
-		int year = Integer.parseInt(date[0]);
-		int month = Integer.parseInt(date[1]);
-		LocalDate now = LocalDate.now();
-		return 12 * (now.getYear() - year - 1) + (12 - now.getMonthValue()) + month;
-	}
 }

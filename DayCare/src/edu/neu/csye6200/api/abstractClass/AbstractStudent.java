@@ -2,6 +2,7 @@ package edu.neu.csye6200.api.abstractClass;
 
 import edu.neu.csye6200.model.Student;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public abstract class AbstractStudent {
@@ -15,9 +16,9 @@ public abstract class AbstractStudent {
 	 * - set the classroom_id of Student table in database
 	 * @param student a student object
 	 */
-	public abstract void addStudent(Student student);
+	public abstract void addStudent(Student student) throws SQLException;
 
-	public abstract void updateStudent(Student student);
+	public abstract void updateStudent(Student student) throws SQLException;
 
 	public abstract void delStudent(Student student);
 

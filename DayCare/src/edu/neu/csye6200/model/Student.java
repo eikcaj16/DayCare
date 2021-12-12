@@ -1,58 +1,66 @@
 package edu.neu.csye6200.model;
 
+import edu.neu.csye6200.utils.ConversionHelper;
+
 import java.util.Date;
 
 public class Student extends Person {
 
-	private Date immunizationDate;
-	private Date registrationDate;
+	private String immunizationDate;
+	private String registrationDate;
+	private int classroomId;
+	private int groupId;
+	private double rating;
 	private long studentId;
-	/**
-	 * 
-	 * @param immunizationDate
-	 */
-	public void setImmunizationDate(Date immunizationDate) {
+
+	public String getImmunizationDate() {
+		return immunizationDate;
+	}
+
+	public void setImmunizationDate(String immunizationDate) {
 		this.immunizationDate = immunizationDate;
 	}
 
-	public Date getImmunizationDate() {
-		return this.immunizationDate;
+	public String getRegistrationDate() {
+		return registrationDate;
 	}
 
-	/**
-	 * 
-	 * @param registrationDate
-	 */
-	public void setRegistrationDate(Date registrationDate) {
+	public void setRegistrationDate(String registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
-	public Date getRegistrationDate() {
-		return this.registrationDate;
+	public int getClassroomId() {
+		return classroomId;
 	}
 
+	public void setClassroomId(int classroomId) {
+		this.classroomId = classroomId;
+	}
 
-	/**
-	 * 
-	 * @param studentId
-	 */
+	public int getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
+	}
+
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
+
+	public long getStudentId() {
+		return studentId;
+	}
+
 	public void setStudentId(long studentId) {
 		this.studentId = studentId;
 	}
 
-	public long getStudentId() {
-		return this.studentId;
-	}
-	
-	public static Student createStudent(String[] attributes) {
-		Student s = new Student();
-		s.setFirstName(attributes[0]);
-		s.setLastName(attributes[1]);
-		s.setAge(Integer.parseInt(attributes[2]));
-		s.setAddress(attributes[3]);
-		s.setPhoneNum(Integer.parseInt(attributes[4]));
-		s.setStudentId(Integer.parseInt(attributes[7]));		
-		return s;
-	}
+
 
 }
