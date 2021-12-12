@@ -45,7 +45,4 @@ public class StudentController {
 		return api.getRegistrationDate();
 	}
 
-	public long getStudentId() {
-		return api.getStudentId();
-	}
 }

@@ -11,7 +11,7 @@ import edu.neu.csye6200.api.factory.GroupFactory;
 import edu.neu.csye6200.model.*;
 import edu.neu.csye6200.utils.FileUtil;
 
-public class GroupingHelper {
+public class GroupHelper {
 	
 	static String studentfile = "students.csv";
 	static String teachersfile = "teachers.csv";
