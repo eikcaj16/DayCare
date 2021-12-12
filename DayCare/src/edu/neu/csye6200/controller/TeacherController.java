@@ -1,36 +1,37 @@
 package edu.neu.csye6200.controller;
 
+import edu.neu.csye6200.api.TeacherApi;
 import edu.neu.csye6200.model.Teacher;
+
+import java.util.List;
 
 public class TeacherController {
 
-	private Teacher model;
-	
-	TeacherController(Teacher model){
-		this.model = model;
-	}
-	
-	/**
-	 * 
-	 * @param review
-	 */
-	public void setReview(double review) {
-		model.setReview(review);
+	private final TeacherApi api = new TeacherApi();
+
+	public int getNumOfTeachers() {
+		return api.getNumOfTeachers();
 	}
 
-	public double getReview() {
-		return model.getReview();
+	public List<Teacher> getAllTeachers() {
+		return api.getAllTeachers();
 	}
 
-	/**
-	 * 
-	 * @param emplpyeeId
-	 */
-	public void setEmployeeId(long emplpyeeId) {
-		model.setEmployeeId(emplpyeeId);
+	public void addTeacher(Teacher teacher) {
+		api.addTeacher(teacher);
 	}
 
-	public long getEmployeeId() {
-		return model.getEmployeeId();
+	public void updateTeacher(Teacher teacher) {
+		api.updateTeacher(teacher);
 	}
+
+	public void delTeacher(Teacher teacher) {
+		api.delTeacher(teacher);
+	}
+
+	public void delTeacher(long teacherId) {
+		api.delTeacher(teacherId);
+	}
+
+	public double getRating(long teacherId) { return api.getRating(teacherId); }
 }

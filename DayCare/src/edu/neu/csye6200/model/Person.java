@@ -1,96 +1,59 @@
 package edu.neu.csye6200.model;
 
-public class Person extends AbstractPerson {
-	
+public class Person {
+
 	private String firstName;
 	private String lastName;
 	private int age;
 	private String address;
 	private long phoneNum;
 	private String parentName;
-	
-	/**
-	 * 
-	 * @param firstName
-	 */
-	@Override
+
+	public String getFirstName() {
+		return firstName;
+	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	@Override
-	public String getFirstName() {
-		return this.firstName;
+	public String getLastName() {
+		return lastName;
 	}
 
-	/**
-	 * 
-	 * @param lastName
-	 */
-	@Override
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-	@Override
-	public String getLastName() {
-		return this.lastName;
+	public int getAge() {
+		return age;
 	}
 
-	/**
-	 * 
-	 * @param age
-	 */
-	@Override
 	public void setAge(int age) {
 		this.age = age;
 	}
 
-	@Override
-	public int getAge() {
-		return this.age;
+	public String getAddress() {
+		return address;
 	}
 
-	/**
-	 * 
-	 * @param address
-	 */
-	@Override
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
-	@Override
-	public String getAddress() {
-		return this.address;
+	public long getPhoneNum() {
+		return phoneNum;
 	}
 
-	/**
-	 * 
-	 * @param phoneNum
-	 */
-	@Override
 	public void setPhoneNum(long phoneNum) {
-		// TODO - implement AbstractPerson.setPhoneNum
 		this.phoneNum = phoneNum;
 	}
 
-	@Override
-	public long getPhoneNum() {
-		return this.phoneNum;
+	public String getParentName() {
+		return parentName;
 	}
 
-	/**
-	 * 
-	 * @param parentName
-	 */
-	@Override
 	public void setParentName(String parentName) {
 		this.parentName = parentName;
 	}
-	@Override
-	public String getParentName() {
-		return this.parentName;
-	}
-
 }
