@@ -16,6 +16,8 @@ public class GroupController {
         api.addGroup(group);
     }
 
+    public void updateGroup(Group group) { api.updatedGroup(group); }
+
     public void delGroup(Group group) {
         api.delGroup(group);
     }

@@ -28,4 +28,5 @@ public abstract class AbstractTeacher {
 
     public abstract int getNumOfTeachers();
 
+    public abstract double getRating(long teacherId);
 }

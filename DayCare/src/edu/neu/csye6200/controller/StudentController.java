@@ -29,14 +29,6 @@ public class StudentController {
 		api.delStudent(studentId);
 	}
 
-	public void setImmunizationDate(Date immunizationDate) {
-		api.setImmunizationDate(immunizationDate);
-	}
-
-	public Date getImmunizationDate() {
-		return api.getImmunizationDate();
-	}
-
 	public void setRegistrationDate(Date registrationDate) {
 		api.setRegistrationDate(registrationDate);
 	}

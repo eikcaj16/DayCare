@@ -25,4 +25,8 @@ public class GroupApi extends AbstractGroup {
     @Override
     public void delGroup(Group group) {
     }
+
+    @Override
+    public void delGroup(int groupId) {
+    }
 }

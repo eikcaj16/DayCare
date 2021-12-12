@@ -12,4 +12,6 @@ public abstract class AbstractGroup {
 	public abstract void updatedGroup(Group group);
 
 	public abstract void delGroup(Group group);
+
+	public abstract void delGroup(int groupId);
 }

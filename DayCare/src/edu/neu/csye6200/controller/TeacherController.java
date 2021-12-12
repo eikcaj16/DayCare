@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TeacherController {
 
-	private TeacherApi api = new TeacherApi();
+	private final TeacherApi api = new TeacherApi();
 
 	public int getNumOfTeachers() {
 		return api.getNumOfTeachers();
@@ -21,6 +21,10 @@ public class TeacherController {
 		api.addTeacher(teacher);
 	}
 
+	public void updateTeacher(Teacher teacher) {
+		api.updateTeacher(teacher);
+	}
+
 	public void delTeacher(Teacher teacher) {
 		api.delTeacher(teacher);
 	}
@@ -28,19 +32,6 @@ public class TeacherController {
 	public void delTeacher(long teacherId) {
 		api.delTeacher(teacherId);
 	}
-	/**
-	 * 
-	 * @param review
-	 */
-	public void setReview(double review) {
-		api.setReview(review);
-	}
 
-	public double getReview() {
-		return api.getReview();
-	}
-
-	public long getTeacherId() {
-		return api.getTeacherId();
-	}
+	public double getRating(long teacherId) { return api.getRating(teacherId); }
 }

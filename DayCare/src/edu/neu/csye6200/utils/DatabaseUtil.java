@@ -163,8 +163,4 @@ public class DatabaseUtil {
         }
         return null;
     }
-
-    public static void main(String[] args) {
-
-    }
 }
