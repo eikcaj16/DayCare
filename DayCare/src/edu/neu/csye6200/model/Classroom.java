@@ -3,6 +3,8 @@ package edu.neu.csye6200.model;
 import edu.neu.csye6200.api.abstractClass.AbstractClassroom;
 import edu.neu.csye6200.api.abstractClass.AbstractStudent;
 import edu.neu.csye6200.utils.DatabaseUtil;
+import edu.neu.csye6200.utils.Utilities;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -75,10 +77,10 @@ public class Classroom {
 				Student s = new Student();
 				s.setFirstName(rs.getString("first_name"));
 				s.setLastName(rs.getString("last_name"));
-				s.setAge(calAge(rs.getString("date_of_birth")));
+				s.setDateOfBirth(rs.getString("date_of_birth"));
 				s.setAddress(rs.getString("address"));
 				s.setPhoneNum(rs.getLong("phone_no"));
-				s.setRegistrationDate(rs.getDate("reg_date"));
+				s.setRegistrationDate(rs.getString("reg_date"));
 				s.setStudentId(rs.getLong("student_id"));
 				students.add(s);
 			}

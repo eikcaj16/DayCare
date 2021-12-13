@@ -109,22 +109,18 @@ public class StudentApi extends AbstractStudent {
 
     @Override
     public void delStudent(long studentId) {
-
+        studentDao.deleteStudentFromDb(studentId);
     }
 
-    public void setImmunizationDate(Date immunizationDate) {
 
+    public void setRegistrationDate(String registrationDate, Student student) throws SQLException {
+        student.setRegistrationDate(registrationDate);
+        updateStudent(student);
     }
 
-    public Date getImmunizationDate(long studentId) {
-        return null;
-    }
-
-    public void setRegistrationDate(Date registrationDate) {
-
-    }
-
-    public Date getRegistrationDate(long studentId) {
-        return null;
+    public String getRegistrationDate(long studentId) throws SQLException {
+        ResultSet rs = studentDao.getRegDateStudentFromDb(studentId);
+        Student student = StudentHelper.createStudent(rs);
+        return student.getRegistrationDate();
     }
 }
