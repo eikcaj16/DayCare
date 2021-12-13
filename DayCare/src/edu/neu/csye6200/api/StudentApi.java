@@ -33,7 +33,7 @@ public class StudentApi extends AbstractStudent {
     }
 
     @Override
-    public void addStudent(Student student) throws SQLException {
+    public void addStudent(Student student) {
 //        if(student_num >= AllGroupSize[classroom_type] * AllGroupNum[classroom_type]){
 //            System.out.println("The class room is full!");
 //            return false;
@@ -41,11 +41,21 @@ public class StudentApi extends AbstractStudent {
 
         // Query the student info from database and cal the age
         ResultSet rs = studentDao.getStudentFromDb(student);
-        Student dbStudent = StudentHelper.createStudent(rs);
+        Student dbStudent = null;
+        try{
+            dbStudent = StudentHelper.createStudent(rs);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         int age = 0;
         try{
             if(Objects.requireNonNull(rs).next()) {
-                String birthdate = dbStudent.getDateOfBirth();
+                String birthdate = "";
+                try {
+                    birthdate = dbStudent.getDateOfBirth();
+                } catch (NullPointerException e){
+                    e.printStackTrace();
+                }
                 age = Utilities.calAge(birthdate);
             }
             else{
@@ -81,21 +91,28 @@ public class StudentApi extends AbstractStudent {
         }
         else{
             System.out.println("Student age is not fit!");
-            //Throw exception
+
         }
     }
 
     @Override
-    public void updateStudent(Student student) throws SQLException {
-        //Get student if exists
+    public void updateStudent(Student student){
+        // Get student data if exists from database
         ResultSet rs = studentDao.getStudentFromDb(student);
-        //update
-        Student dbStudent = StudentHelper.createStudent(rs);
+        // create student object from data
+        Student dbStudent = null;
+        try{
+        dbStudent = StudentHelper.createStudent(rs);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
         if(dbStudent != null){
-            //TODO: update dbstudent with student values
+            // update the data in the database
             studentDao.updateStudent(dbStudent);
         }else{
-            //TODO: Add new student to db
+            // create a new student
             studentDao.addStudentToDb(student);
         }
 
@@ -103,24 +120,37 @@ public class StudentApi extends AbstractStudent {
 
     @Override
     public void delStudent(Student student) {
+        // Deleting student using student obj from database
         studentDao.deleteStudentFromDb(student);
 
     }
 
     @Override
     public void delStudent(long studentId) {
+        // Deleting student using student id from database
         studentDao.deleteStudentFromDb(studentId);
     }
 
 
-    public void setRegistrationDate(String registrationDate, Student student) throws SQLException {
+    public void setRegistrationDate(String registrationDate, Student student){
+        // Setting registration date using student obj
         student.setRegistrationDate(registrationDate);
+        // Updating the student object in the database
         updateStudent(student);
     }
 
-    public String getRegistrationDate(long studentId) throws SQLException {
+    public String getRegistrationDate(long studentId) {
+        // Retrieving studennt data from database
         ResultSet rs = studentDao.getRegDateStudentFromDb(studentId);
-        Student student = StudentHelper.createStudent(rs);
+        // Creating student from the data
+        Student student = null;
+        try{
+            student = StudentHelper.createStudent(rs);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        // Returning the registration date
         return student.getRegistrationDate();
     }
 }

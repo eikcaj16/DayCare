@@ -30,11 +30,11 @@ public class StudentController {
 		api.delStudent(studentId);
 	}
 
-	public void setRegistrationDate(String registrationDate, Student student) throws SQLException {
+	public void setRegistrationDate(String registrationDate, Student student) {
 		api.setRegistrationDate(registrationDate, student);
 	}
 
-	public String getRegistrationDate(Student student) throws SQLException {
+	public String getRegistrationDate(Student student){
 		return api.getRegistrationDate(student.getStudentId());
 	}
 
