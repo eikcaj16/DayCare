@@ -39,7 +39,7 @@ public class StudentDao {
 
     public ResultSet getStudentFromDb(Student student){
         String sql = "SELECT * FROM student "
-                + "WHERE STUDENT_ID = "  + student.getStudentId() + ";";
+                + "WHERE student_id = "  + student.getStudentId() + ";";
         return DatabaseUtil.getSQLResult(sql);
     }
 
@@ -47,5 +47,17 @@ public class StudentDao {
         String sql = "DELETE FROM student " +
                 "WHERE student_id = " + student.getStudentId() + ";";
         DatabaseUtil.executeSQL(sql);
+    }
+
+    public void deleteStudentFromDb(long studentId){
+        String sql = "DELETE FROM student " +
+                "WHERE student_id = " + studentId + ";";
+        DatabaseUtil.executeSQL(sql);
+    }
+
+    public ResultSet getRegDateStudentFromDb(long studentId){
+        String sql = "SELECT * FROM student " +
+                "WHERE student_id = " + studentId + ";";
+        return DatabaseUtil.getSQLResult(sql);
     }
 }
