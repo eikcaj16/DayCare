@@ -37,10 +37,6 @@ public class FileUtil {
 				br.append(",");
 				br.write(String.valueOf(stud.getPhoneNum()));
 				br.append(",");
-				br.write(String.valueOf(stud.getClassroomId()));
-				br.append(",");
-				br.write(String.valueOf(stud.getGroupId()));
-				br.append(",");
 				br.write(String.valueOf(stud.getReview()));
 				br.append(",");
 			 	br.newLine();
@@ -85,10 +81,6 @@ public class FileUtil {
 				br.write(String.valueOf(teach.getEmail()));
 				br.append(",");
 				br.write(String.valueOf(teach.getPhoneNum()));
-				br.append(",");
-				br.write(String.valueOf(teach.getClassroomId()));
-				br.append(",");
-				br.write(String.valueOf(teach.getGroupId()));
 				br.append(",");
 				br.write(String.valueOf(teach.getRating()));
 				br.append(",");

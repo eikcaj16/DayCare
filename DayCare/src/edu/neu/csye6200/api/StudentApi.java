@@ -77,7 +77,7 @@ public class StudentApi extends AbstractStudent {
 
             //Update classroom id of the student in database
             //TODO: add the student to group and classroom in db
-            studentDao.updateClassIdAndGroupIdForStudent(student);
+//            studentDao.updateClassIdAndGroupIdForStudent(student);
             System.out.println("Add success!");
         }
         else{

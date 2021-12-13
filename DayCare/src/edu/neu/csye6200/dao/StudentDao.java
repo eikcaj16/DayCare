@@ -14,12 +14,12 @@ public class StudentDao {
                 + "','" + student.getLastName()
                 + "','" + student.getAddress()
                 + "','" + student.getDateOfBirth()
+                + "','" + student.getAge()
                 + "','" + student.getParentName()
                 + "','" + student.getPhoneNum()
                 + "','" + student.getEmail()
                 + "','" + student.getRegistrationDate()
-                + "','" + student.getClassroomId()
-                + "','" + student.getGroupId()
+                + "','" + student.getAnnualRegistrationDate()
                 + "','" + student.getReview() + "');";
         DatabaseUtil.executeSQL(sql);
     }
@@ -29,19 +29,14 @@ public class StudentDao {
                 + "', last_name = '" + student.getLastName()
                 + "', address = '" + student.getAddress()
                 + "', date_of_birth = '" + student.getDateOfBirth()
+                + "', age = '" + student.getAge()
                 + "', parent_name = '" + student.getParentName()
                 + "', email = '" + student.getEmail()
                 + "', reg_date = '" + student.getRegistrationDate()
+                + "', annual_reg_date = '" + student.getAnnualRegistrationDate()
                 + "', phone_no = '" + student.getPhoneNum()
                 + "', rating = '" + student.getReview()
                 + " WHERE student_id = '" + student.getStudentId() + "';";
-        DatabaseUtil.executeSQL(sql);
-    }
-    public void updateClassIdAndGroupIdForStudent(Student student){
-        String sql = "UPDATE student " +
-                "SET classroom_id = '" + student.getClassroomId()
-                + "', group_id = '" + student.getGroupId() +
-                " WHERE student_id = '" + student.getStudentId() + "';";
         DatabaseUtil.executeSQL(sql);
     }
 

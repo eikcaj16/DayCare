@@ -62,15 +62,6 @@ public class TeacherApi extends AbstractTeacher {
         }
     }
 
-//    public void updateClassroomIdGroupIdByTeacherId(Teacher teacher) {
-//        ResultSet rs = dao.getTeacherById(teacher.getTeacherId());
-//        if(rs == null) {
-//            System.out.println("Record already exists");
-//        } else {
-//            dao.updateClassroomAndGroupByTeacherId(teacher);
-//        }
-//    }
-
     @Override
     public void deleteTeacher(Teacher teacher) {
         dao.deleteTeacherFromDb(teacher);
