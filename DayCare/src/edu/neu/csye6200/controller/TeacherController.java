@@ -25,12 +25,12 @@ public class TeacherController {
 		api.updateTeacher(teacher);
 	}
 
-	public void delTeacher(Teacher teacher) {
-		api.delTeacher(teacher);
+	public void deleteTeacher(Teacher teacher) {
+		api.deleteTeacher(teacher);
 	}
 
-	public void delTeacher(long teacherId) {
-		api.delTeacher(teacherId);
+	public void deleteTeacher(long teacherId) {
+		api.deleteTeacher(teacherId);
 	}
 
 	public double getRating(long teacherId) { return api.getRating(teacherId); }

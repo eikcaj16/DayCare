@@ -20,11 +20,16 @@ public class ImmunizationApi extends AbstractImmunization {
 
     @Override
     public void updateImmunization(Immunization imm) {
-
+        dao.updateImmunization(imm);
     }
 
     @Override
     public void deleteImmunization(Immunization imm) {
+        dao.deleteImmunization(imm);
+    }
 
+    @Override
+    public void deleteImmunization(long immunizationId) {
+        dao.deleteImmunization(immunizationId);
     }
 }

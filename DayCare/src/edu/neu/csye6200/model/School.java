@@ -1,97 +1,59 @@
 package edu.neu.csye6200.model;
 
-import edu.neu.csye6200.api.abstractClass.AbstractClassroom;
-import edu.neu.csye6200.api.abstractClass.AbstractSchool;
-import edu.neu.csye6200.utils.DatabaseUtil;
+public class School {
+    private long id;
+    private long studentId;
+    private long teacherId;
+    private long groupId;
+    private long classroomId;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-public class School extends AbstractSchool {
-
-    public static List<Classroom> classrooms = new ArrayList<>();
-
-    // TODO - Arrange enums into an appropriate place
-    public enum StudentStatus {
-        enrolled,
-        alumni
+    public School(long id, long studentId, long teacherId, long groupId, long classroomId) {
+        this.id = id;
+        this.studentId = studentId;
+        this.teacherId = teacherId;
+        this.groupId = groupId;
+        this.classroomId = classroomId;
     }
 
-    public enum ImmunizationStatus {
-        noRecord,
-        active,
-        expired
+    public School() {    }
+
+    public long getId() {
+        return id;
     }
 
-    public void trackStudentEnrollment() {
-        // TODO - implement AbstractSchool.trackStudentEnrollment
-        throw new UnsupportedOperationException();
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void trackStudentImmunization() {
-        // TODO - implement AbstractSchool.trackStudentImmunization
-        throw new UnsupportedOperationException();
+    public long getStudentId() {
+        return studentId;
     }
 
-    public void trackStudentRegistration() {
-        // TODO - implement AbstractSchool.trackStudentRegistration
-        throw new UnsupportedOperationException();
+    public void setStudentId(long studentId) {
+        this.studentId = studentId;
     }
 
-    public void trackAnnualEmployeeReview() {
-        // TODO - implement AbstractSchool.trackAnnualEmployeeReview
-        throw new UnsupportedOperationException();
+    public long getTeacherId() {
+        return teacherId;
     }
 
-    @Override
-    public List<Classroom> getAllClassrooms() {
-        return classrooms;
+    public void setTeacherId(long teacherId) {
+        this.teacherId = teacherId;
     }
 
-    @Override
-    public int getNumOfClassrooms() {
-        return classrooms.size();
+    public long getGroupId() {
+        return groupId;
     }
 
-    /**
-     *
-     */
-    public static Classroom addClassroom(int type) {
-        Classroom classroom = new Classroom(type);
-        classrooms.add(classroom);
-        return classroom;
+    public void setGroupId(long groupId) {
+        this.groupId = groupId;
     }
 
-    /**
-     * @param classroom
-     */
-    public static void delClassroom(Classroom classroom) {
-        classrooms.remove(classroom);
+    public long getClassroomId() {
+        return classroomId;
     }
 
-    /**
-     * @param classroomId
-     */
-    public static void delClassroom(int classroomId) {
-        classrooms.stream().filter(c -> c.getClassroomId() == classroomId).forEach(c -> classrooms.remove(c));
-    }
-
-    public static void init() {
-        String sql = "SELECT COUNT(*) as num FROM student";
-        ResultSet rs = DatabaseUtil.getSQLResult(sql);
-        int stu_size = 0;
-        try{
-            if(Objects.requireNonNull(rs).next()) {
-                stu_size = rs.getInt("num");
-                System.out.printf("There are %d student", stu_size);
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-
-        
+    public void setClassroomId(long classroomId) {
+        this.classroomId = classroomId;
     }
 }

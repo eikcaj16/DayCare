@@ -1,37 +1,39 @@
 package edu.neu.csye6200.api.helper;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.stream.Collectors;
-
 import edu.neu.csye6200.api.abstractClass.AbstractClassroom;
 import edu.neu.csye6200.api.factory.ClassroomFactory;
 import edu.neu.csye6200.api.factory.GroupFactory;
 import edu.neu.csye6200.model.*;
 import edu.neu.csye6200.utils.FileUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.stream.Collectors;
+
+import static edu.neu.csye6200.utils.ConvertUtil.calAge;
+
 public class GroupHelper {
 	
-	static String studentfile = "students.csv";
-	static String teachersfile = "teachers.csv";
+	static String studentFile = "students.csv";
+	static String teachersFile = "teachers.csv";
 	
 	public static void groupMe() {
 
-		students = FileUtil.readStudentFromCSV(studentfile);
-		teachers = FileUtil.readTeacherFromCSV(teachersfile);
+		List<Student> students = FileUtil.readStudentFromCSV(studentFile);
+		List<Teacher> teachers = FileUtil.readTeacherFromCSV(teachersFile);
 	
-		List<Student> sixToTwelve = students.stream().filter(student -> student.getAge() >= 6 && student.getAge() <= 12).collect(Collectors.toList());
-		List<Student> thirteenToTwentyfour = students.stream().filter(student -> student.getAge() >= 13 && student.getAge() <= 24).collect(Collectors.toList());
-		List<Student> twentyfiveToThirtyFive = students.stream().filter(student -> student.getAge() >= 25 && student.getAge() <= 35).collect(Collectors.toList());
-		List<Student> thirtySixToFortySeven = students.stream().filter(student -> student.getAge() >= 36 && student.getAge() <= 47).collect(Collectors.toList());
-		List<Student> fortyEightToFiftyNine = students.stream().filter(student -> student.getAge() >= 48 && student.getAge() <= 59).collect(Collectors.toList());
-		List<Student> sixtyAndUp = students.stream().filter(student -> student.getAge() >= 60).collect(Collectors.toList());
+		List<Student> sixToTwelve = students.stream().filter(student -> calAge(student.getDateOfBirth()) >= 6 && calAge(student.getDateOfBirth()) <= 12).collect(Collectors.toList());
+		List<Student> thirteenToTwentyFour = students.stream().filter(student -> calAge(student.getDateOfBirth()) >= 13 && calAge(student.getDateOfBirth()) <= 24).collect(Collectors.toList());
+		List<Student> twentyFiveToThirtyFive = students.stream().filter(student -> calAge(student.getDateOfBirth()) >= 25 && calAge(student.getDateOfBirth()) <= 35).collect(Collectors.toList());
+		List<Student> thirtySixToFortySeven = students.stream().filter(student -> calAge(student.getDateOfBirth()) >= 36 && calAge(student.getDateOfBirth()) <= 47).collect(Collectors.toList());
+		List<Student> fortyEightToFiftyNine = students.stream().filter(student -> calAge(student.getDateOfBirth()) >= 48 && calAge(student.getDateOfBirth()) <= 59).collect(Collectors.toList());
+		List<Student> sixtyAndUp = students.stream().filter(student -> calAge(student.getDateOfBirth()) >= 60).collect(Collectors.toList());
 		List<List<Student>> studentAgeGroups = new ArrayList<>();
 		
 		studentAgeGroups.add(sixToTwelve);
-		studentAgeGroups.add(thirteenToTwentyfour);
-		studentAgeGroups.add(twentyfiveToThirtyFive);
+		studentAgeGroups.add(thirteenToTwentyFour);
+		studentAgeGroups.add(twentyFiveToThirtyFive);
 		studentAgeGroups.add(thirtySixToFortySeven);
 		studentAgeGroups.add(fortyEightToFiftyNine);
 		studentAgeGroups.add(sixtyAndUp);

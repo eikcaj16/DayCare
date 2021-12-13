@@ -1,6 +1,5 @@
 package edu.neu.csye6200.controller;
 
-import edu.neu.csye6200.api.abstractClass.AbstractClassroom;
 import edu.neu.csye6200.model.Classroom;
 import edu.neu.csye6200.model.School;
 

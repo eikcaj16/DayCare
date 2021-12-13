@@ -3,22 +3,17 @@ package edu.neu.csye6200.api;
 import edu.neu.csye6200.api.abstractClass.AbstractStudent;
 import edu.neu.csye6200.api.helper.StudentHelper;
 import edu.neu.csye6200.dao.StudentDao;
-import edu.neu.csye6200.model.Group;
 import edu.neu.csye6200.model.Student;
-import edu.neu.csye6200.utils.DatabaseUtil;
-import edu.neu.csye6200.utils.Utilities;
+import edu.neu.csye6200.utils.ConvertUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 public class StudentApi extends AbstractStudent {
-    private StudentDao studentDao = new StudentDao();
-    private static final int[] AllGroupSize = {4, 5, 6, 8, 12, 15};
-    private static final int[] AllGroupNum = {3, 3, 3, 3, 2, 2};
+    private final StudentDao studentDao = new StudentDao();
     private static final int[] AllMinAge = {6, 13, 25, 36, 48, 60};
     private static final int[] AllMaxAge = {12, 24, 35, 47, 59, Integer.MAX_VALUE};
 
@@ -34,10 +29,6 @@ public class StudentApi extends AbstractStudent {
 
     @Override
     public void addStudent(Student student) {
-//        if(student_num >= AllGroupSize[classroom_type] * AllGroupNum[classroom_type]){
-//            System.out.println("The class room is full!");
-//            return false;
-//        }
 
         // Query the student info from database and cal the age
         ResultSet rs = studentDao.getStudentFromDb(student);
@@ -56,7 +47,7 @@ public class StudentApi extends AbstractStudent {
                 } catch (NullPointerException e){
                     e.printStackTrace();
                 }
-                age = Utilities.calAge(birthdate);
+                age = ConvertUtil.calAge(birthdate);
             }
             else{
                 System.out.println("This student id not exist!");
@@ -115,22 +106,19 @@ public class StudentApi extends AbstractStudent {
             // create a new student
             studentDao.addStudentToDb(student);
         }
-
     }
 
     @Override
-    public void delStudent(Student student) {
+    public void deleteStudent(Student student) {
         // Deleting student using student obj from database
         studentDao.deleteStudentFromDb(student);
-
     }
 
     @Override
-    public void delStudent(long studentId) {
+    public void deleteStudent(long studentId) {
         // Deleting student using student id from database
         studentDao.deleteStudentFromDb(studentId);
     }
-
 
     public void setRegistrationDate(String registrationDate, Student student){
         // Setting registration date using student obj
@@ -140,7 +128,7 @@ public class StudentApi extends AbstractStudent {
     }
 
     public String getRegistrationDate(long studentId) {
-        // Retrieving studennt data from database
+        // Retrieving student data from database
         ResultSet rs = studentDao.getRegDateStudentFromDb(studentId);
         // Creating student from the data
         Student student = null;

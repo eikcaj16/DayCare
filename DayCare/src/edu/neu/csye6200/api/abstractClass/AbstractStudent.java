@@ -20,11 +20,11 @@ public abstract class AbstractStudent {
 
 	public abstract void updateStudent(Student student) throws SQLException;
 
-	public abstract void delStudent(Student student);
+	public abstract void deleteStudent(Student student);
 
 	/**
 	 * delete a student from classroom
 	 * @param studentId a student id
 	 */
-	public abstract void delStudent(long studentId);
+	public abstract void deleteStudent(long studentId);
 }
