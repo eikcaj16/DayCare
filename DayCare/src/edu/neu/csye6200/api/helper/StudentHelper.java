@@ -1,27 +1,50 @@
 package edu.neu.csye6200.api.helper;
 
 import edu.neu.csye6200.model.Student;
-import edu.neu.csye6200.utils.ConversionHelper;
+import edu.neu.csye6200.utils.ConvertUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+
+import static edu.neu.csye6200.utils.ConvertUtil.*;
 
 public class StudentHelper {
 
     public static Student createStudent(ResultSet rs) throws SQLException {
-        ConversionHelper convHelper = new ConversionHelper();
-        Student s = new Student();
-        s.setStudentId(convHelper.stringToLong(rs.getString("student_id")));
-        s.setFirstName(rs.getString("first_name"));
-        s.setLastName(rs.getString("last_name"));
-        s.setAddress(rs.getString("address"));
-        s.setDateOfBirth(rs.getString("date_of_birth"));
-        s.setParentName(rs.getString("parent_name"));
-        s.setEmail(rs.getString("email"));
-        s.setRegistrationDate(rs.getString("reg_date"));
-        s.setPhoneNum(convHelper.stringToInt(rs.getString("phone_no")));
-        s.setClassroomId(convHelper.stringToInt(rs.getString("classroom_id")));
-        s.setGroupId(convHelper.stringToInt(rs.getString("group_id")));
-        s.setRating(convHelper.stringToDouble(rs.getString("rating")));
-        return s;
-    }}
+        Student student = new Student();
+        student.setStudentId(stringToLong(rs.getString("student_id")));
+        student.setFirstName(rs.getString("first_name"));
+        student.setLastName(rs.getString("last_name"));
+        student.setAddress(rs.getString("address"));
+        student.setDateOfBirth(rs.getString("date_of_birth"));
+        student.setParentName(rs.getString("parent_name"));
+        student.setEmail(rs.getString("email"));
+        student.setRegistrationDate(rs.getString("reg_date"));
+        student.setPhoneNum(stringToInt(rs.getString("phone_no")));
+        student.setClassroomId(stringToInt(rs.getString("classroom_id")));
+        student.setGroupId(stringToInt(rs.getString("group_id")));
+        student.setReview(stringToDouble(rs.getString("rating")));
+        return student;
+    }
+
+    public static Student createStudent(String[] attributes) {
+        LocalDate localDate = stringtoDate(attributes[6]);
+        LocalDate annualDate = localDate.plusYears(1);
+        Student student = new Student();
+        student.setFirstName(attributes[0]);
+        student.setLastName(attributes[1]);
+        student.setAddress(attributes[2]);
+        student.setDateOfBirth(attributes[3]);
+        student.setAge(ConvertUtil.calAge(attributes[3]));
+        student.setParentName(attributes[4]);
+        student.setEmail(attributes[5]);
+        student.setRegistrationDate(attributes[6]);
+        student.setAnnualRegistrationDate(annualDate.toString());
+        student.setPhoneNum(stringToInt(attributes[7]));
+        student.setClassroomId(stringToInt(attributes[8]));
+        student.setGroupId(stringToInt(attributes[9]));
+        student.setReview(stringToDouble(attributes[10]));
+        return student;
+    }
+}

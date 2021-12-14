@@ -22,8 +22,6 @@ public class ClassroomApi extends AbstractClassroom {
         return null;
     }
 
-
-
     @Override
     public int getNumOfClassrooms() {
         return 0;

@@ -19,12 +19,12 @@ public abstract class AbstractTeacher {
      *
      * @param teacher
      */
-    public abstract void delTeacher(Teacher teacher);
+    public abstract void deleteTeacher(Teacher teacher);
     /**
      *
      * @param teacherId
      */
-    public abstract void delTeacher(long teacherId);
+    public abstract void deleteTeacher(long teacherId);
 
     public abstract int getNumOfTeachers();
 

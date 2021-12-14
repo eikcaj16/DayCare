@@ -1,10 +1,8 @@
 package edu.neu.csye6200.api.abstractClass;
 
 import edu.neu.csye6200.model.Classroom;
-import edu.neu.csye6200.model.Group;
-import edu.neu.csye6200.model.Student;
 
-import java.util.*;
+import java.util.List;
 
 public abstract class AbstractClassroom {
 

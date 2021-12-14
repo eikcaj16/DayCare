@@ -4,7 +4,6 @@ import edu.neu.csye6200.api.StudentApi;
 import edu.neu.csye6200.model.Student;
 
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 public class StudentController {
@@ -18,16 +17,14 @@ public class StudentController {
 	public List<Student> getAllStudents() {
 		return api.getAllStudents();
 	}
-	public void addStudent(Student student) throws SQLException {
-		api.addStudent(student);
-	}
+	public void addStudent(Student student) { api.addStudent(student); }
 
 	public void delStudent(Student student) {
-		api.delStudent(student);
+		api.deleteStudent(student);
 	}
 
 	public void delStudent(long studentId) {
-		api.delStudent(studentId);
+		api.deleteStudent(studentId);
 	}
 
 	public void setRegistrationDate(String registrationDate, Student student) {

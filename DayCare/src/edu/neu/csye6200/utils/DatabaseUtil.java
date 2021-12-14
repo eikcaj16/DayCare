@@ -133,7 +133,7 @@ public class DatabaseUtil {
         createTable(tableName, keys, primaryKey, null);
     }
 
-    static void dropTable(String tableName) {
+    public static void dropTable(String tableName) {
         try {
             Statement stmt = Objects.requireNonNull(getRemoteConnection()).createStatement();
             stmt.executeUpdate("DROP TABLE " + tableName.toUpperCase());
@@ -142,7 +142,7 @@ public class DatabaseUtil {
         }
     }
 
-    static void deleteRecord(String tableName, String primaryKey, String primaryValue) {
+    public static void deleteRecord(String tableName, String primaryKey, String primaryValue) {
         try {
             Statement stmt = Objects.requireNonNull(getRemoteConnection()).createStatement();
             stmt.executeUpdate("DELETE  FROM " + tableName +

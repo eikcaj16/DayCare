@@ -1,18 +1,73 @@
 package edu.neu.csye6200.model;
 
+import edu.neu.csye6200.model.enums.StatusType;
+import edu.neu.csye6200.model.enums.VaccinationType;
+
 public class Immunization {
 
     private long immunizationId;
-    private String immunizationName;
+    private VaccinationType immunizationName;
     private long studentId;
-    private long dose_1_id;
-    private String dose_1_date;
-    private long dose_2_id;
-    private String dose_2_date;
-    private long dose_3_id;
-    private String dose_3_date;
-    private long dose_4_id;
-    private String dose_4_date;
+    private int totalDoses;
+    private int dosesTaken;
+    private StatusType vaccinationStatusType;
+    private String recentVaccineDate;
+    private String nextVaccineDate;
+
+    public Immunization(long immunizationId, VaccinationType immunizationName, long studentId, int totalDoses, int dosesTaken,
+                        StatusType vaccinationStatusType, String recentVaccineDate, String nextVaccineDate) {
+        this.immunizationId = immunizationId;
+        this.immunizationName = immunizationName;
+        this.studentId = studentId;
+        this.totalDoses = totalDoses;
+        this.dosesTaken = dosesTaken;
+        this.vaccinationStatusType = vaccinationStatusType;
+        this.recentVaccineDate = recentVaccineDate;
+        this.nextVaccineDate = nextVaccineDate;
+    }
+
+    public Immunization() {
+    }
+
+    public int getTotalDoses() {
+        return totalDoses;
+    }
+
+    public void setTotalDoses(int totalDoses) {
+        this.totalDoses = totalDoses;
+    }
+
+    public int getDosesTaken() {
+        return dosesTaken;
+    }
+
+    public void setDosesTaken(int dosesTaken) {
+        this.dosesTaken = dosesTaken;
+    }
+
+    public StatusType getVaccinationStatus() {
+        return vaccinationStatusType;
+    }
+
+    public void setVaccinationStatus(StatusType vaccinationStatusType) {
+        this.vaccinationStatusType = vaccinationStatusType;
+    }
+
+    public String getRecentVaccineDate() {
+        return recentVaccineDate;
+    }
+
+    public void setRecentVaccineDate(String recentVaccineDate) {
+        this.recentVaccineDate = recentVaccineDate;
+    }
+
+    public String getNextVaccineDate() {
+        return nextVaccineDate;
+    }
+
+    public void setNextVaccineDate(String nextVaccineDate) {
+        this.nextVaccineDate = nextVaccineDate;
+    }
 
     public long getImmunizationId() {
         return immunizationId;
@@ -22,11 +77,11 @@ public class Immunization {
         this.immunizationId = immunizationId;
     }
 
-    public String getImmunizationName() {
+    public VaccinationType getImmunizationName() {
         return immunizationName;
     }
 
-    public void setImmunizationName(String immunizationName) {
+    public void setImmunizationName(VaccinationType immunizationName) {
         this.immunizationName = immunizationName;
     }
 
@@ -36,69 +91,5 @@ public class Immunization {
 
     public void setStudentId(long studentId) {
         this.studentId = studentId;
-    }
-
-    public long getDose_1_id() {
-        return dose_1_id;
-    }
-
-    public void setDose_1_id(long dose_1_id) {
-        this.dose_1_id = dose_1_id;
-    }
-
-    public String getDose_1_date() {
-        return dose_1_date;
-    }
-
-    public void setDose_1_date(String dose_1_date) {
-        this.dose_1_date = dose_1_date;
-    }
-
-    public long getDose_2_id() {
-        return dose_2_id;
-    }
-
-    public void setDose_2_id(long dose_2_id) {
-        this.dose_2_id = dose_2_id;
-    }
-
-    public String getDose_2_date() {
-        return dose_2_date;
-    }
-
-    public void setDose_2_date(String dose_2_date) {
-        this.dose_2_date = dose_2_date;
-    }
-
-    public long getDose_3_id() {
-        return dose_3_id;
-    }
-
-    public void setDose_3_id(long dose_3_id) {
-        this.dose_3_id = dose_3_id;
-    }
-
-    public String getDose_3_date() {
-        return dose_3_date;
-    }
-
-    public void setDose_3_date(String dose_3_date) {
-        this.dose_3_date = dose_3_date;
-    }
-
-    public long getDose_4_id() {
-        return dose_4_id;
-    }
-
-    public void setDose_4_id(long dose_4_id) {
-        this.dose_4_id = dose_4_id;
-    }
-
-    public String getDose_4_date() {
-        return dose_4_date;
-    }
-
-    public void setDose_4_date(String dose_4_date) {
-        this.dose_4_date = dose_4_date;
     }
 }

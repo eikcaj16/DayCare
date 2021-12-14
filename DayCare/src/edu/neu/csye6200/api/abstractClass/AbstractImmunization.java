@@ -14,4 +14,6 @@ public abstract class AbstractImmunization {
 
     public abstract void deleteImmunization(Immunization imm);
 
+    public abstract void deleteImmunization(long immunizationId);
+
 }

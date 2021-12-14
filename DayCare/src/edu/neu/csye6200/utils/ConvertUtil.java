@@ -1,9 +1,11 @@
 package edu.neu.csye6200.utils;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.logging.SimpleFormatter;
 
-public class ConversionHelper {
+public class ConvertUtil {
 	
 	public static int stringToInt(String str) {
 		int val = 0;
@@ -51,5 +53,13 @@ public class ConversionHelper {
 		}
 		
 		return val;
+	}
+
+	public static int calAge(String birthdate){
+		String[] date = birthdate.split("-");
+		int year = Integer.parseInt(date[0]);
+		int month = Integer.parseInt(date[1]);
+		LocalDate now = LocalDate.now();
+		return 12 * (now.getYear() - year - 1) + (12 - now.getMonthValue()) + month;
 	}
 }
