@@ -1,64 +1,67 @@
 package edu.neu.csye6200.model;
 
 import edu.neu.csye6200.model.enums.ClassroomType;
-import edu.neu.csye6200.model.enums.StatusType;
 
 public class Classroom {
+    private int classroomId;
+    private ClassroomType classroomType;
+    private int numOfStudent;
+    private int numOfTeacher;
+    private int numOfGroup;
 
-	private long classroomId;
-	private int currentGroupCount;
-	private int maxGroupPerCount;
-	private ClassroomType classroomType;
-	private StatusType classroomStatusType;
+    public Classroom(int classroomId, ClassroomType classroomType) {
+        this.classroomId = classroomId;
+        this.classroomType = classroomType;
+        this.numOfStudent = 0;
+        this.numOfTeacher = 0;
+        this.numOfGroup = 0;
+    }
 
-	public Classroom(long classroomId, int currentGroupCount, int maxGroupPerCount, ClassroomType classroomType, StatusType classroomStatusType) {
-		this.classroomId = classroomId;
-		this.currentGroupCount = currentGroupCount;
-		this.maxGroupPerCount = maxGroupPerCount;
-		this.classroomType = classroomType;
-		this.classroomStatusType = classroomStatusType;
-	}
+    public Classroom(int classroomId, ClassroomType classroomType, int numOfStudent, int numOfTeacher, int numOfGroup) {
+        this.classroomId = classroomId;
+        this.classroomType = classroomType;
+        this.numOfStudent = numOfStudent;
+        this.numOfTeacher = numOfTeacher;
+        this.numOfGroup = numOfGroup;
+    }
 
-	public Classroom() {
-	}
+    public int getClassroomId() {
+        return classroomId;
+    }
 
-	public long getClassroomId() {
-		return classroomId;
-	}
+    public void setClassroomId(int classroomId) {
+        this.classroomId = classroomId;
+    }
 
-	public void setClassroomId(long classroomId) {
-		this.classroomId = classroomId;
-	}
+    public ClassroomType getClassroomType() {
+        return classroomType;
+    }
 
-	public int getCurrentGroupCount() {
-		return currentGroupCount;
-	}
+    public void setClassroomType(ClassroomType classroomType) {
+        this.classroomType = classroomType;
+    }
 
-	public void setCurrentGroupCount(int currentGroupCount) {
-		this.currentGroupCount = currentGroupCount;
-	}
+    public int getNumOfStudent() {
+        return numOfStudent;
+    }
 
-	public int getMaxGroupPerCount() {
-		return maxGroupPerCount;
-	}
+    public void setNumOfStudent(int numOfStudent) {
+        this.numOfStudent = numOfStudent;
+    }
 
-	public void setMaxGroupPerCount(int maxGroupPerCount) {
-		this.maxGroupPerCount = maxGroupPerCount;
-	}
+    public int getNumOfTeacher() {
+        return numOfTeacher;
+    }
 
-	public ClassroomType getClassroomType() {
-		return classroomType;
-	}
+    public void setNumOfTeacher(int numOfTeacher) {
+        this.numOfTeacher = numOfTeacher;
+    }
 
-	public void setClassroomType(ClassroomType classroomType) {
-		this.classroomType = classroomType;
-	}
+    public int getNumOfGroup() {
+        return numOfGroup;
+    }
 
-	public StatusType getClassroomStatus() {
-		return classroomStatusType;
-	}
-
-	public void setClassroomStatus(StatusType classroomStatusType) {
-		this.classroomStatusType = classroomStatusType;
-	}
+    public void setNumOfGroup(int numOfGroup) {
+        this.numOfGroup = numOfGroup;
+    }
 }

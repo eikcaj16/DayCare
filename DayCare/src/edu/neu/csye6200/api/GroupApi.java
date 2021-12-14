@@ -1,32 +1,16 @@
 package edu.neu.csye6200.api;
 
-import edu.neu.csye6200.api.abstractClass.AbstractGroup;
 import edu.neu.csye6200.model.Group;
 
-import java.util.ArrayList;
 import java.util.List;
+public interface GroupApi {
+    List<Group> getAllGroups();
 
-public class GroupApi extends AbstractGroup {
-    @Override
-    public List<Group> getAllGroups() {
-        return new ArrayList<>();
-    }
+    List<Group> getAllGroupsInClassroom(int classroomId);
 
-    @Override
-    public void addGroup(Group group) {
+    void addGroup(Group group);
 
-    }
+    void updatedGroup(Group group);
 
-    @Override
-    public void updatedGroup(Group group) {
-
-    }
-
-    @Override
-    public void delGroup(Group group) {
-    }
-
-    @Override
-    public void delGroup(int groupId) {
-    }
+    void delGroup(Group group);
 }

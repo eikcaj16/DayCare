@@ -4,60 +4,42 @@ import edu.neu.csye6200.model.enums.GroupType;
 import edu.neu.csye6200.model.enums.StatusType;
 
 public class Group {
+    private int groupId;
+    private int classroomId;
+    private int teacherId;
 
-	private long groupId;
-	private int currentStudentCount;
-	private int maxStudentPerGroup;
-	private GroupType groupType;
-	private StatusType groupStatusType;
+    public Group(int groupId, int classroomId) {
+        this.groupId = groupId;
+        this.classroomId = classroomId;
+    }
 
-	public Group(long groupId, int currentStudentCount, int maxStudentPerGroup, GroupType groupType, StatusType groupStatusType) {
-		this.groupId = groupId;
-		this.currentStudentCount = currentStudentCount;
-		this.maxStudentPerGroup = maxStudentPerGroup;
-		this.groupType = groupType;
-		this.groupStatusType = groupStatusType;
-	}
+    public Group(int groupId, int classroomId, int teacherId) {
+        this.groupId = groupId;
+        this.classroomId = classroomId;
+        this.teacherId = teacherId;
+    }
 
-	public Group() {	}
+    public int getGroupId() {
+        return groupId;
+    }
 
-	public long getGroupId() {
-		return groupId;
-	}
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
 
-	public void setGroupId(long groupId) {
-		this.groupId = groupId;
-	}
+    public int getClassroomId() {
+        return classroomId;
+    }
 
-	public int getCurrentStudentCount() {
-		return currentStudentCount;
-	}
+    public void setClassroomId(int classroomId) {
+        this.classroomId = classroomId;
+    }
 
-	public void setCurrentStudentCount(int currentStudentCount) {
-		this.currentStudentCount = currentStudentCount;
-	}
+    public int getTeacherId() {
+        return teacherId;
+    }
 
-	public int getMaxStudentPerGroup() {
-		return maxStudentPerGroup;
-	}
-
-	public void setMaxStudentPerGroup(int maxStudentPerGroup) {
-		this.maxStudentPerGroup = maxStudentPerGroup;
-	}
-
-	public GroupType getGroupType() {
-		return groupType;
-	}
-
-	public void setGroupType(GroupType groupType) {
-		this.groupType = groupType;
-	}
-
-	public StatusType getGroupStatus() {
-		return groupStatusType;
-	}
-
-	public void setGroupStatus(StatusType groupStatusType) {
-		this.groupStatusType = groupStatusType;
-	}
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
 }

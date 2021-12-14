@@ -1,6 +1,6 @@
 package edu.neu.csye6200.api.helper;
 
-import edu.neu.csye6200.api.abstractClass.AbstractClassroom;
+import edu.neu.csye6200.api.ClassroomApi;
 import edu.neu.csye6200.api.factory.ClassroomFactory;
 import edu.neu.csye6200.api.factory.GroupFactory;
 import edu.neu.csye6200.model.*;
@@ -133,9 +133,9 @@ public class GroupHelper {
 	}
 	
 	
-	public static void parseAddTeacher(List<Teacher> t, List<AbstractClassroom> classrooms) {
+	public static void parseAddTeacher(List<Teacher> t, List<ClassroomApi> classrooms) {
 		int currTF = 0;
-		for(AbstractClassroom cl : classrooms) {
+		for(ClassroomApi cl : classrooms) {
 			for(Group g : cl.getAllGroups()) {
 				g.setTeacher(t.get(currTF));
 				System.out.println("i am  in parseaddteacher");

@@ -1,7 +1,7 @@
 package edu.neu.csye6200.utils;
 
-import edu.neu.csye6200.api.StudentApi;
-import edu.neu.csye6200.api.TeacherApi;
+import edu.neu.csye6200.api.concrete.ConcreteStudentApi;
+import edu.neu.csye6200.api.concrete.ConcreteTeacherApi;
 import edu.neu.csye6200.api.helper.StudentHelper;
 import edu.neu.csye6200.api.helper.TeacherHelper;
 import edu.neu.csye6200.model.Student;
@@ -13,8 +13,8 @@ import java.util.List;
 
 public class FileUtil {
 
-	private static final TeacherApi teacherApi = new TeacherApi();
-	private static final StudentApi studentApi = new StudentApi();
+	private static final ConcreteTeacherApi teacherApi = new ConcreteTeacherApi();
+	private static final ConcreteStudentApi studentApi = new ConcreteStudentApi();
 
 	public static void writeStudentToCSV(String fileName, List<Student> studentArrays){
 		try (BufferedWriter br = new BufferedWriter(new FileWriter(fileName))){

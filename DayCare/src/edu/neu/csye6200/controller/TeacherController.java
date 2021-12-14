@@ -1,20 +1,28 @@
 package edu.neu.csye6200.controller;
 
 import edu.neu.csye6200.api.TeacherApi;
+import edu.neu.csye6200.api.concrete.ConcreteTeacherApi;
 import edu.neu.csye6200.model.Teacher;
 
 import java.util.List;
 
 public class TeacherController {
+	private final TeacherApi api = new ConcreteTeacherApi();
 
-	private final TeacherApi api = new TeacherApi();
+	public List<Teacher> getAllTeachers() {
+		return api.getAllTeachers();
+	}
 
 	public int getNumOfTeachers() {
 		return api.getNumOfTeachers();
 	}
 
-	public List<Teacher> getAllTeachers() {
-		return api.getAllTeachers();
+	public List<Teacher> getAllTeachersInClassroom(int classroomId) {
+		return api.getAllTeachersInClassroom(classroomId);
+	}
+
+	public List<Teacher> getTeacherInGroup(int classroomId, int groupId) {
+		return api.getTeacherInGroup(classroomId, groupId);
 	}
 
 	public void addTeacher(Teacher teacher) {
@@ -29,9 +37,11 @@ public class TeacherController {
 		api.deleteTeacher(teacher);
 	}
 
-	public void deleteTeacher(long teacherId) {
+	public void deleteTeacher(int teacherId) {
 		api.deleteTeacher(teacherId);
 	}
 
-	public double getRating(long teacherId) { return api.getRating(teacherId); }
+	public double getRating(int teacherId) {
+		return api.getRating(teacherId);
+	}
 }

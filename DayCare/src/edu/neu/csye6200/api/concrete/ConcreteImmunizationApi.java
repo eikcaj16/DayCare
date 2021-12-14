@@ -1,32 +1,35 @@
-package edu.neu.csye6200.controller;
+package edu.neu.csye6200.api.concrete;
 
 import edu.neu.csye6200.api.ImmunizationApi;
-import edu.neu.csye6200.api.concrete.ConcreteImmunizationApi;
+import edu.neu.csye6200.dao.ImmunizationDao;
 import edu.neu.csye6200.model.Immunization;
 
 import java.util.Date;
 import java.util.List;
 
-public class ImmunizationController {
-    private final ImmunizationApi api = new ConcreteImmunizationApi();
-
+public class ConcreteImmunizationApi implements ImmunizationApi {
+    @Override
     public List<Immunization> getAllImmunization() {
-        return api.getAllImmunization();
+        return null;
     }
 
+    @Override
     public List<Immunization> getImmunizationByName(String immName) {
-        return api.getImmunizationByName(immName);
+        return null;
     }
 
+    @Override
     public void addImmunization(Immunization imm) {
-        api.addImmunization(imm);
+
     }
 
+    @Override
     public void updateImmunization(Immunization imm) {
-        api.updateImmunization(imm);
+
     }
 
+    @Override
     public void deleteImmunization(Immunization imm) {
-        api.deleteImmunization(imm);
+
     }
 }

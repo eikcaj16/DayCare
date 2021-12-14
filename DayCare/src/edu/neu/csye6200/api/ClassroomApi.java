@@ -1,29 +1,15 @@
 package edu.neu.csye6200.api;
 
-import edu.neu.csye6200.api.abstractClass.AbstractClassroom;
 import edu.neu.csye6200.model.Classroom;
 
 import java.util.List;
 
-public class ClassroomApi extends AbstractClassroom {
+public interface ClassroomApi {
+    List<Classroom> getAllClassrooms();
 
-    @Override
-    public int getClassroomIdByStudentId(long studentId) {
-        return 0;
-    }
+    void addClassroom(Classroom classroom);
 
-    @Override
-    public int getClassroomIdByTeacherId(long teacherId) {
-        return 0;
-    }
+    void updateClassroom(Classroom classroom);
 
-    @Override
-    public List<Classroom> getAllClassrooms() {
-        return null;
-    }
-
-    @Override
-    public int getNumOfClassrooms() {
-        return 0;
-    }
+    void deleteClassroom(Classroom classroom);
 }

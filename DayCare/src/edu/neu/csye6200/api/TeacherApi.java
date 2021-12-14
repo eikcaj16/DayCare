@@ -1,74 +1,26 @@
 package edu.neu.csye6200.api;
 
-import edu.neu.csye6200.api.abstractClass.AbstractTeacher;
-import edu.neu.csye6200.dao.TeacherDao;
 import edu.neu.csye6200.model.Teacher;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
-public class TeacherApi extends AbstractTeacher {
+public interface TeacherApi {
 
-    private final TeacherDao dao = new TeacherDao();
+    List<Teacher> getAllTeachers();
 
-    @Override
-    public int getNumOfTeachers() {
-        return 0;
-    }
+    int getNumOfTeachers();
 
-    @Override
-    public double getRating(long teacherId) {
-        ResultSet rs = dao.getTeacherRatingById(teacherId);
-        if(rs!= null) {
-            try {
-                return rs.getDouble(0);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        System.out.println("No record found");
-        return 0.0;
-    }
+    List<Teacher> getAllTeachersInClassroom(int classroomId);
 
-    @Override
-    public List<Teacher> getAllTeachers() {
-        return null;
-    }
+    List<Teacher> getTeacherInGroup(int classroomId, int groupId);
 
-    /**
-     * add a teacher to classroom
-     * @param teacher
-     *
-     */
-    @Override
-    public void addTeacher(Teacher teacher) {
-        //Todo check for teacherId for the record in db
-        ResultSet rs = dao.getTeacherById(teacher.getTeacherId());
-        if(rs == null) {
-            dao.addTeacher(teacher);
-        } else {
-            System.out.println("Record already exists");
-        }
-    }
+    void addTeacher(Teacher teacher);
 
-    @Override
-    public void updateTeacher(Teacher teacher) {
-        ResultSet rs = dao.getTeacherById(teacher.getTeacherId());
-        if(rs == null) {
-            dao.addTeacher(teacher);
-        } else {
-            dao.updateTeacher(teacher);
-        }
-    }
+    void updateTeacher(Teacher teacher);
 
-    @Override
-    public void deleteTeacher(Teacher teacher) {
-        dao.deleteTeacherFromDb(teacher);
-    }
+    void deleteTeacher(Teacher teacher);
 
-    @Override
-    public void deleteTeacher(long teacherId) {
-        dao.deleteTeacherFromDb(teacherId);
-    }
+    void deleteTeacher(int teacherId);
+
+    double getRating(int teacherId);
 }

@@ -1,39 +1,43 @@
-package edu.neu.csye6200.controller;
+package edu.neu.csye6200.api.concrete;
 
 import edu.neu.csye6200.api.SchoolApi;
-import edu.neu.csye6200.api.concrete.ConcreteSchoolApi;
 import edu.neu.csye6200.model.Student;
 
 import java.util.List;
 
-public class SchoolController {
-    private final SchoolApi api = new ConcreteSchoolApi();
-
+public class ConcreteSchoolApi implements SchoolApi {
+    @Override
     public void rateAllTeachers() {
-        api.rateAllTeachers();
+
     }
 
+    @Override
     public void rateTeacher(int teacherId) {
-        api.rateTeacher(teacherId);
+
     }
 
+    @Override
     public void assignAllStudentsAndTeachers() {
-        api.assignAllStudentsAndTeachers();
+
     }
 
+    @Override
     public List<Student> findUnvaccinatedStudentsByImmNameDose(String immName, int dose) {
-        return api.findUnvaccinatedStudentsByImmNameDose(immName, dose);
+        return null;
     }
 
+    @Override
     public List<Student> findUnvaccinatedStudents() {
-        return api.findUnvaccinatedStudents();
+        return null;
     }
 
+    @Override
     public void trackStudentEnrollment() {
-        api.trackStudentEnrollment();
+
     }
 
+    @Override
     public void trackStudentRegistration() {
-        api.trackStudentRegistration();
+
     }
 }

@@ -1,62 +1,50 @@
 package edu.neu.csye6200.model;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 public class Student extends Person {
+    private int studentId;
+    private Date registrationDate;
+    private double rating;
 
-	private String registrationDate;
-	private String annualRegistrationDate;
-	private int age;
-	private double review;
-	private long studentId;
+    public Student(String firstName, String lastName, String address, LocalDate dateOfBirth, String email,
+                   long phoneNum, String parentName, int studentId, Date registrationDate, double rating,
+                   int classroomId, int groupId) {
+        super(firstName, lastName, address, dateOfBirth, email, phoneNum, parentName, classroomId, groupId);
+        this.studentId = studentId;
+        this.registrationDate = registrationDate;
+        this.rating = rating;
+    }
 
-	public Student(String registrationDate, String annualRegistrationDate, int age, double review, long studentId) {
-		this.registrationDate = registrationDate;
-		this.annualRegistrationDate = annualRegistrationDate;
-		this.age = age;
-		this.review = review;
-		this.studentId = studentId;
-	}
+    public Student(String firstName, String lastName, String address, LocalDate dateOfBirth, String email,
+                   long phoneNum, String parentName, int studentId, Date registrationDate) {
+        super(firstName, lastName, address, dateOfBirth, email, phoneNum, parentName);
+        this.studentId = studentId;
+        this.registrationDate = registrationDate;
+    }
 
-	public Student() {
-	}
+    public int getStudentId() {
+        return studentId;
+    }
 
-	public String getAnnualRegistrationDate() {
-		return annualRegistrationDate;
-	}
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
 
-	public void setAnnualRegistrationDate(String annualRegistrationDate) {
-		this.annualRegistrationDate = annualRegistrationDate;
-	}
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public double getRating() {
+        return rating;
+    }
 
-	public String getRegistrationDate() {
-		return registrationDate;
-	}
-
-	public void setRegistrationDate(String registrationDate) {
-		this.registrationDate = registrationDate;
-	}
-
-	public double getReview() {
-		return review;
-	}
-
-	public void setReview(double review) {
-		this.review = review;
-	}
-
-	public long getStudentId() {
-		return studentId;
-	}
-
-	public void setStudentId(long studentId) {
-		this.studentId = studentId;
-	}
-
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
 }
