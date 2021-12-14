@@ -1,48 +1,150 @@
 package edu.neu.csye6200.dao;
 
+import edu.neu.csye6200.api.helper.StudentHelper;
+import edu.neu.csye6200.api.helper.TeacherHelper;
+import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Teacher;
 import edu.neu.csye6200.utils.DatabaseUtil;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherDao {
-    public List<Teacher> getAllTeachersDao() {
+    public static List<Teacher> getAllTeachersDao() {
         return null;
     }
 
-    public int getNumOfTeachersDao() {
+    public static int getNumOfTeachersDao() {
+        Connection con = DatabaseUtil.getRemoteConnection();
+        try {
+            assert con != null;
+            Statement state = con.createStatement();
+            String sql = "SELECT COUNT(*) as num FROM teacher";
+            ResultSet rs = state.executeQuery(sql);
+            int size = 0;
+            if(rs.next()){
+                size = rs.getInt("num");
+            }
+            return size;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return 0;
     }
 
-    public List<Teacher> getAllTeachersInClassroomDao(int classroomId) {
-        return null;
+    public static List<Teacher> getAllTeachersInClassroomDao(int classroomId) {
+        List<Teacher> teachers = new ArrayList<>();
+
+        Connection con = DatabaseUtil.getRemoteConnection();
+        try {
+            assert con != null;
+            Statement state = con.createStatement();
+            String sql = "SELECT * as num FROM teacher "
+                + "WHERE classroom_id = " + classroomId;
+            ResultSet rs = state.executeQuery(sql);
+            while(rs.next()){
+                teachers.add(TeacherHelper.createTeacher(rs));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return teachers;
     }
 
-    public List<Teacher> getTeacherInGroupDao(int classroomId, int groupId) {
-        return null;
+    public static List<Teacher> getTeacherInGroupDao(int classroomId, int groupId) {
+        List<Teacher> teachers = new ArrayList<>();
+
+        Connection con = DatabaseUtil.getRemoteConnection();
+        try {
+            assert con != null;
+            Statement state = con.createStatement();
+            String sql = "SELECT * as num FROM teacher "
+                + "WHERE classroom_id = " + classroomId
+                + ", group_id = " + groupId;
+            ResultSet rs = state.executeQuery(sql);
+            while(rs.next()){
+                teachers.add(TeacherHelper.createTeacher(rs));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return teachers;
     }
 
-    public void addTeacherDao(Teacher teacher) {
-
+    public static void addTeacherDao(Teacher teacher) {
+        String sql = "INSERT into TEACHER (teacher_id, classroom_id, group_id, "
+            + "first_name, last_name, date_of_birth, "
+            + "address, parent_name, phone_no, rating)"
+            + "VALUES("
+            +"','"+teacher.getTeacherId()
+            +"','"+IdToString(teacher.getClassroom_id())
+            +"','"+IdToString(teacher.getGroup_id())
+            +"','"+teacher.getFirstName()
+            +"','"+teacher.getLastName()
+            +"','"+teacher.getDateOfBirth()
+            +"','"+teacher.getAddress()
+            +"','"+teacher.getParentName()
+            +"','"+teacher.getPhoneNum()
+            +"','"+teacher.getRating()
+            + ")";
+        DatabaseUtil.executeSQL(sql);
     }
 
-    public void updateTeacherDao(Teacher teacher) {
-
+    public static void updateTeacherDao(Teacher teacher) {
+        String sql = "UPDATE TEACHER SET "
+            + "teacher_id = " + teacher.getTeacherId()
+            + ", first_name = " + teacher.getFirstName()
+            + ", last_name = " + teacher.getLastName()
+            + ", address = " + teacher.getAddress()
+            + ", date_of_birth = " + teacher.getDateOfBirth()
+            + ", parent_name = " + teacher.getParentName()
+            + ", phone_no = " + teacher.getPhoneNum()
+            + ", classroom_id = " + IdToString(teacher.getClassroom_id())
+            + ", group_id = " + IdToString(teacher.getGroup_id())
+            + ", rating = " + teacher.getRating() + "');";
+        DatabaseUtil.executeSQL(sql);
     }
 
-    public void deleteTeacherDao(Teacher teacher) {
-
+    public static void deleteTeacherDao(Teacher teacher) {
+        DatabaseUtil.deleteRecord("teacher", "teacher_id",
+            String.valueOf(teacher.getTeacherId()));
     }
 
-    public void deleteTeacherDao(int teacherId) {
-
+    public static void deleteTeacherDao(int teacherId) {
+        DatabaseUtil.deleteRecord("teacher", "teacher_id",
+            String.valueOf(teacherId));
     }
 
-    public double getRatingDao(int teacherId) {
+    public static double getRatingDao(int teacherId) {
+        Connection con = DatabaseUtil.getRemoteConnection();
+        try {
+            assert con != null;
+            Statement state = con.createStatement();
+            String sql = "SELECT rating FROM teacher WHERE teacher_id = " + teacherId;
+            ResultSet rs = state.executeQuery(sql);
+            int rating = 0;
+            if(rs.next()){
+                rating = rs.getInt("rating");
+            }
+            return rating;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return 0;
+
     }
 
+    static String IdToString(int id) {
+        if (id == -1) {
+            return "null";
+        } else {
+            return String.valueOf(id);
+        }
+    }
 //    public void addTeacher(Teacher teacher) {
 //        String sql = "INSERT into TEACHER (classroom_id, group_id, first_name, last_name, date_of_birth, address, email " +
 //                "parent_name, phone_no, rating) " +

@@ -37,7 +37,7 @@ public class FileUtil {
 				br.append(",");
 				br.write(String.valueOf(stud.getPhoneNum()));
 				br.append(",");
-				br.write(String.valueOf(stud.getReview()));
+				br.write(String.valueOf(stud.getRating()));
 				br.append(",");
 			 	br.newLine();
 			}
@@ -46,22 +46,22 @@ public class FileUtil {
 		}
 	}
 
-	public static List<Student> readStudentFromCSV(String fileName){
-		List<Student> studentRoster = new ArrayList<>();
-		try (FileReader fr = new FileReader(fileName);
-			BufferedReader br = new BufferedReader(fr)) {
-			String line = br.readLine();
-			while(line != null) {
-				String[] attributes = line.split(",");
-				Student student = StudentHelper.createStudent(attributes);
-				studentApi.addStudent(student);
-				line = br.readLine();
-			}
-		} catch (IOException ioe) {
-	        ioe.printStackTrace();
-	    }
-		return studentRoster;
-	}
+//	public static List<Student> readStudentFromCSV(String fileName){
+//		List<Student> studentRoster = new ArrayList<>();
+//		try (FileReader fr = new FileReader(fileName);
+//			BufferedReader br = new BufferedReader(fr)) {
+//			String line = br.readLine();
+//			while(line != null) {
+//				String[] attributes = line.split(",");
+//				Student student = StudentHelper.createStudent(attributes);
+//				studentApi.addStudent(student);
+//				line = br.readLine();
+//			}
+//		} catch (IOException ioe) {
+//	        ioe.printStackTrace();
+//	    }
+//		return studentRoster;
+//	}
 
 	public static void writeTeacherToCSV(String fileName, List<Teacher> teacherArrays){
 		try (BufferedWriter br = new BufferedWriter(new FileWriter(fileName))) {
@@ -91,20 +91,20 @@ public class FileUtil {
 		}
 	}
 
-	public static List<Teacher> readTeacherFromCSV(String fileName){
-		List<Teacher> teacherRoster = new ArrayList<>();
-		try (FileReader fr = new FileReader(fileName);
-			BufferedReader br = new BufferedReader(fr)) {
-			String line = br.readLine();
-			while(line != null) {
-				String[] attributes = line.split(",");
-				Teacher teacher = TeacherHelper.createTeacher(attributes);
-				teacherApi.addTeacher(teacher);
-				line = br.readLine();
-			}
-		} catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-		return teacherRoster;
-	}
+//	public static List<Teacher> readTeacherFromCSV(String fileName){
+//		List<Teacher> teacherRoster = new ArrayList<>();
+//		try (FileReader fr = new FileReader(fileName);
+//			BufferedReader br = new BufferedReader(fr)) {
+//			String line = br.readLine();
+//			while(line != null) {
+//				String[] attributes = line.split(",");
+//				Teacher teacher = TeacherHelper.createTeacher(attributes);
+//				teacherApi.addTeacher(teacher);
+//				line = br.readLine();
+//			}
+//		} catch (IOException ioe) {
+//            ioe.printStackTrace();
+//        }
+//		return teacherRoster;
+//	}
 }

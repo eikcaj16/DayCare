@@ -1,91 +1,145 @@
 package edu.neu.csye6200.dao;
 
+import edu.neu.csye6200.api.helper.StudentHelper;
 import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.utils.DatabaseUtil;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDao {
-    public int getNumOfStudentsDao() {
+
+    public static int getNumOfStudentsDao() {
+        Connection con = DatabaseUtil.getRemoteConnection();
+        try {
+          assert con != null;
+          Statement state = con.createStatement();
+          String sql = "SELECT COUNT(*) as num FROM student";
+          ResultSet rs = state.executeQuery(sql);
+          int stu_size = 0;
+          if(rs.next()){
+            stu_size = rs.getInt("num");
+          }
+          //System.out.printf("There are %d student", stu_size);
+          return stu_size;
+        }catch (SQLException e){
+          e.printStackTrace();
+        }
         return 0;
     }
 
-    public List<Student> getAllStudentsDao() {
-        return null;
+    public static List<Student> getAllStudentsDao() {
+      List<Student> students = new ArrayList<>();
+
+      Connection con = DatabaseUtil.getRemoteConnection();
+      try {
+        assert con != null;
+        Statement state = con.createStatement();
+        String sql = "SELECT * as num FROM student";
+        ResultSet rs = state.executeQuery(sql);
+        while(rs.next()){
+          students.add(StudentHelper.createStudent(rs));
+        }
+      }catch (SQLException e){
+        e.printStackTrace();
+      }
+      return students;
     }
 
-    public List<Student> getAllStudentsInClassroomDao(int classroomId) {
-        return null;
+    public static List<Student> getAllStudentsInClassroomDao(int classroomId) {
+      List<Student> students = new ArrayList<>();
+
+      Connection con = DatabaseUtil.getRemoteConnection();
+      try {
+        assert con != null;
+        Statement state = con.createStatement();
+        String sql = "SELECT * as num FROM student WHERE classroom_id = " + classroomId;
+        ResultSet rs = state.executeQuery(sql);
+        while(rs.next()){
+          students.add(StudentHelper.createStudent(rs));
+        }
+      }catch (SQLException e){
+        e.printStackTrace();
+      }
+      return students;
     }
 
-    public List<Student> getAllStudentsInGroupDao(int classroomId, int groupId) {
-        return null;
+    public static List<Student> getAllStudentsInGroupDao(int classroomId, int groupId) {
+      List<Student> students = new ArrayList<>();
+
+      Connection con = DatabaseUtil.getRemoteConnection();
+      try {
+        assert con != null;
+        Statement state = con.createStatement();
+        String sql = "SELECT * as num FROM student "
+            + "WHERE classroom_id = " + classroomId
+            + ", group_id = " + groupId;
+        ResultSet rs = state.executeQuery(sql);
+        while(rs.next()){
+          students.add(StudentHelper.createStudent(rs));
+        }
+      }catch (SQLException e){
+        e.printStackTrace();
+      }
+      return students;
     }
 
-    public void addStudentDao(Student student) {
-
+    public static void addStudentDao(Student student) {
+        String sql = "INSERT INTO student (student_id, first_name, "
+            + "last_name, address, date_of_birth, parent_name, email, "
+            + "reg_date, phone_no, classroom_id, group_id, rating) "
+            + "VALUES('" + student.getStudentId()
+            + "','" + student.getFirstName()
+            + "','" + student.getLastName()
+            + "','" + student.getAddress()
+            + "','" + student.getDateOfBirth()
+            + "','" + student.getParentName()
+            + "','" + student.getEmail()
+            + "','" + student.getRegistrationDate()
+            + "','" + student.getPhoneNum()
+            + "','" + IdToString(student.getClassroom_id())
+            + "','" + IdToString(student.getGroup_id())
+            + "','" + student.getRating() + "');";
+        DatabaseUtil.executeSQL(sql);
     }
 
-    public void updateStudentDao(Student student) {
-
+    public static void updateStudentDao(Student student) {
+        String sql = "UPDATE student SET "
+            + "student_id = " + student.getStudentId()
+            + ", first_name = " + student.getFirstName()
+            + ", last_name = " + student.getLastName()
+            + ", address = " + student.getAddress()
+            + ", date_of_birth = " + student.getDateOfBirth()
+            + ", parent_name = " + student.getParentName()
+            + ", email = " + student.getEmail()
+            + ", reg_date = " + student.getRegistrationDate()
+            + ", phone_no = " + student.getPhoneNum()
+            + ", classroom_id = " + IdToString(student.getClassroom_id())
+            + ", group_id = " + IdToString(student.getGroup_id())
+            + ", rating = " + student.getRating() + "');";
+        DatabaseUtil.executeSQL(sql);
     }
 
-    public void deleteStudentDao(Student student) {
-
+    public static void deleteStudentDao(Student student) {
+        DatabaseUtil.deleteRecord("student", "student_id",
+            String.valueOf(student.getStudentId()));
     }
 
-    public void deleteStudentDao(int studentId) {
+    public static void deleteStudentDao(int studentId) {
+        DatabaseUtil.deleteRecord("student", "student_id",
+            String.valueOf(studentId));
+    }
 
+    static String IdToString(int id) {
+        if (id == -1) {
+            return "null";
+        } else {
+            return String.valueOf(id);
+        }
+    }
 
-//    public void addStudentToDb(Student student){
-//        String sql = "INSERT INTO student (first_name, last_name, address, date_of_birth, parent_name, email, " +
-//                "reg_date, phone_no, classroom_id, group_id, rating)" +
-//                "VALUES('" + student.getFirstName()
-//                + "','" + student.getLastName()
-//                + "','" + student.getAddress()
-//                + "','" + student.getDateOfBirth()
-//                + "','" + student.getAge()
-//                + "','" + student.getParentName()
-//                + "','" + student.getPhoneNum()
-//                + "','" + student.getEmail()
-//                + "','" + student.getRegistrationDate()
-//                + "','" + student.getAnnualRegistrationDate()
-//                + "','" + student.getReview() + "');";
-//        DatabaseUtil.executeSQL(sql);
-//    }
-//
-//    public void updateStudent(Student student){
-//        String sql = "UPDATE student " + "SET first_name = '" + student.getFirstName()
-//                + "', last_name = '" + student.getLastName()
-//                + "', address = '" + student.getAddress()
-//                + "', date_of_birth = '" + student.getDateOfBirth()
-//                + "', age = '" + student.getAge()
-//                + "', parent_name = '" + student.getParentName()
-//                + "', email = '" + student.getEmail()
-//                + "', reg_date = '" + student.getRegistrationDate()
-//                + "', annual_reg_date = '" + student.getAnnualRegistrationDate()
-//                + "', phone_no = '" + student.getPhoneNum()
-//                + "', rating = '" + student.getReview()
-//                + " WHERE student_id = '" + student.getStudentId() + "';";
-//        DatabaseUtil.executeSQL(sql);
-//    }
-//
-//    public ResultSet getStudentFromDb(Student student){
-//        String sql = "SELECT * FROM student WHERE student_id = "  + student.getStudentId() + ";";
-//        return DatabaseUtil.getSQLResult(sql);
-//    }
-//
-//    public ResultSet getRegDateStudentFromDb(long studentId){
-//        String sql = "SELECT * FROM student WHERE student_id = " + studentId + ";";
-//        return DatabaseUtil.getSQLResult(sql);
-//    }
-//
-//    public void deleteStudentFromDb(Student student){
-//        DatabaseUtil.deleteRecord("student", "student_id", String.valueOf(student.getStudentId()));
-//    }
-//
-//    public void deleteStudentFromDb(long studentId){
-//        DatabaseUtil.deleteRecord("student", "student_id", String.valueOf(studentId));
-//    }
 }

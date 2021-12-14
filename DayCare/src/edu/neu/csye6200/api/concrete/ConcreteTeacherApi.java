@@ -4,53 +4,51 @@ import edu.neu.csye6200.api.TeacherApi;
 import edu.neu.csye6200.dao.TeacherDao;
 import edu.neu.csye6200.model.Teacher;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 public class ConcreteTeacherApi implements TeacherApi {
     @Override
     public List<Teacher> getAllTeachers() {
-        return null;
+        return TeacherDao.getAllTeachersDao();
     }
 
     @Override
     public int getNumOfTeachers() {
-        return 0;
+        return TeacherDao.getNumOfTeachersDao();
     }
 
     @Override
     public List<Teacher> getAllTeachersInClassroom(int classroomId) {
-        return null;
+        return TeacherDao.getAllTeachersInClassroomDao(classroomId);
     }
 
     @Override
     public List<Teacher> getTeacherInGroup(int classroomId, int groupId) {
-        return null;
+        return TeacherDao.getTeacherInGroupDao(classroomId, groupId);
     }
 
     @Override
     public void addTeacher(Teacher teacher) {
-
+        TeacherDao.addTeacherDao(teacher);
     }
 
     @Override
     public void updateTeacher(Teacher teacher) {
-
+        TeacherDao.updateTeacherDao(teacher);
     }
 
     @Override
     public void deleteTeacher(Teacher teacher) {
-
+        TeacherDao.deleteTeacherDao(teacher);
     }
 
     @Override
     public void deleteTeacher(int teacherId) {
-
+        TeacherDao.deleteTeacherDao(teacherId);
     }
 
     @Override
     public double getRating(int teacherId) {
-        return 0;
+        return TeacherDao.getRatingDao(teacherId);
     }
 }

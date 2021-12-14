@@ -1,55 +1,49 @@
 package edu.neu.csye6200.api.concrete;
 
 import edu.neu.csye6200.api.StudentApi;
-import edu.neu.csye6200.api.helper.StudentHelper;
 import edu.neu.csye6200.dao.StudentDao;
 import edu.neu.csye6200.model.Student;
-import edu.neu.csye6200.utils.ConvertUtil;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ConcreteStudentApi implements StudentApi {
     @Override
     public int getNumOfStudents() {
-        return 0;
+        return StudentDao.getNumOfStudentsDao();
     }
 
     @Override
     public List<Student> getAllStudents() {
-        return null;
+        return StudentDao.getAllStudentsDao();
     }
 
     @Override
     public List<Student> getAllStudentsInClassroom(int classroomId) {
-        return null;
+        return StudentDao.getAllStudentsInClassroomDao(classroomId);
     }
 
     @Override
     public List<Student> getAllStudentsInGroup(int classroomId, int groupId) {
-        return null;
+        return StudentDao.getAllStudentsInGroupDao(classroomId, groupId);
     }
 
     @Override
     public void addStudent(Student student) {
-
+        StudentDao.addStudentDao(student);
     }
 
     @Override
     public void updateStudent(Student student) {
-
+        StudentDao.updateStudentDao(student);
     }
 
     @Override
     public void deleteStudent(Student student) {
-
+        StudentDao.deleteStudentDao(student);
     }
 
     @Override
     public void deleteStudent(int studentId) {
-
+        StudentDao.deleteStudentDao(studentId);
     }
 }

@@ -22,6 +22,9 @@ public abstract class Person {
         this.email = email;
         this.phoneNum = phoneNum;
         this.parentName = parentName;
+        // to indicate the person is not assigned
+        this.classroom_id = -1;
+        this.group_id = -1;
     }
 
     public Person(String firstName, String lastName, String address, LocalDate dateOfBirth, String email,

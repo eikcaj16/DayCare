@@ -43,7 +43,7 @@ public class ConvertUtil {
 		
 	}
 	
-	public static LocalDate stringtoDate(String str) {
+	public static LocalDate stringtoLocalDate(String str) {
 		LocalDate val = null;
 		
 		try {
