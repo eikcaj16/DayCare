@@ -39,7 +39,7 @@ public class StudentDao {
       try {
         assert con != null;
         Statement state = con.createStatement();
-        String sql = "SELECT * as num FROM student";
+        String sql = "SELECT * FROM student";
         ResultSet rs = state.executeQuery(sql);
         while(rs.next()){
           students.add(StudentHelper.createStudent(rs));
@@ -57,7 +57,7 @@ public class StudentDao {
       try {
         assert con != null;
         Statement state = con.createStatement();
-        String sql = "SELECT * as num FROM student WHERE classroom_id = " + classroomId;
+        String sql = "SELECT * FROM student WHERE classroom_id = " + classroomId;
         ResultSet rs = state.executeQuery(sql);
         while(rs.next()){
           students.add(StudentHelper.createStudent(rs));
@@ -75,7 +75,7 @@ public class StudentDao {
       try {
         assert con != null;
         Statement state = con.createStatement();
-        String sql = "SELECT * as num FROM student "
+        String sql = "SELECT * FROM student "
             + "WHERE classroom_id = " + classroomId
             + ", group_id = " + groupId;
         ResultSet rs = state.executeQuery(sql);
