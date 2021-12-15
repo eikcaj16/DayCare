@@ -16,7 +16,7 @@ public class GroupFactory {
 		return instance;
 	}
 	
-	public Group getObject() {
-		return new Group();
-	}
+//	public Group getObject() {
+//		return new Group();
+//	}
 }
