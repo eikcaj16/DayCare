@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImmunizationDao {
-    public static int getNumOfImmunization() {
+    public static int getNumOfImmunizationDao() {
         return DatabaseUtil.getTableSize("immunization");
     }
 
