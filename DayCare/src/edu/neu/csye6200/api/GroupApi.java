@@ -4,6 +4,8 @@ import edu.neu.csye6200.model.Group;
 
 import java.util.List;
 public interface GroupApi {
+    int getNumOfGroups();
+
     List<Group> getAllGroups();
 
     List<Group> getAllGroupsInClassroom(int classroomId);

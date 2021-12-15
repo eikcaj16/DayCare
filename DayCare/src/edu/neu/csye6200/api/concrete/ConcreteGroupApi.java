@@ -9,6 +9,11 @@ import java.util.List;
 
 public class ConcreteGroupApi implements GroupApi {
     @Override
+    public int getNumOfGroups() {
+        return GroupDao.getNumOfGroupsDao();
+    }
+
+    @Override
     public List<Group> getAllGroups() {
         return GroupDao.getAllGroupsDao();
     }

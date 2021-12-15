@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GroupDao {
+    public static int getNumOfGroupsDao() {
+        return DatabaseUtil.getTableSize("group");
+    }
+
     public static List<Group> getAllGroupsDao() {
         List<Group> groups = new ArrayList<>();
         Connection con = DatabaseUtil.getRemoteConnection();

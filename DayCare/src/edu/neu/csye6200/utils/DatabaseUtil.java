@@ -105,6 +105,23 @@ public class DatabaseUtil {
         }
     }
 
+    public static int getTableSize(String tableName) {
+        Connection con = DatabaseUtil.getRemoteConnection();
+        int size = 0;
+        try {
+            assert con != null;
+            Statement state = con.createStatement();
+            String sql = "SELECT COUNT(*) as num FROM " + tableName;
+            ResultSet rs = state.executeQuery(sql);
+            if(rs.next()){
+                size = rs.getInt("num");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return size;
+    }
+
     static void createTable(String tableName, Map<String, DataType> keys, String primaryKey, Map<String, String> foreignKey) {
         try {
             Statement stmt = Objects.requireNonNull(getRemoteConnection()).createStatement();

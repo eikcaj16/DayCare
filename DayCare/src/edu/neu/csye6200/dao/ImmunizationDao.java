@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImmunizationDao {
+    public static int getNumOfImmunization() {
+        return DatabaseUtil.getTableSize("immunization");
+    }
+
     public static List<Immunization> getAllImmunizationDao() {
         List<Immunization> immunizations = new ArrayList<>();
         Connection con = DatabaseUtil.getRemoteConnection();
