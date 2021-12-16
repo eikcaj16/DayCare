@@ -3,8 +3,9 @@ package edu.neu.csye6200.api.concrete;
 import edu.neu.csye6200.api.GroupApi;
 import edu.neu.csye6200.dao.GroupDao;
 import edu.neu.csye6200.model.Group;
+import edu.neu.csye6200.model.enums.GroupType;
+import edu.neu.csye6200.model.enums.StatusType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ConcreteGroupApi implements GroupApi {
@@ -21,6 +22,10 @@ public class ConcreteGroupApi implements GroupApi {
     @Override
     public List<Group> getAllGroupsInClassroom(int classroomId) {
         return GroupDao.getAllGroupsInClassroomDao(classroomId);
+    }
+
+    public List<Group> getPartialGroupsByGroupType(GroupType groupType) {
+        return GroupDao.getPartialGroupsByGroupType(groupType);
     }
 
     @Override

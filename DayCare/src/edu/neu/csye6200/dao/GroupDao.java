@@ -2,6 +2,8 @@ package edu.neu.csye6200.dao;
 
 import edu.neu.csye6200.api.helper.GroupHelper;
 import edu.neu.csye6200.model.Group;
+import edu.neu.csye6200.model.enums.GroupType;
+import edu.neu.csye6200.model.enums.StatusType;
 import edu.neu.csye6200.utils.DatabaseUtil;
 
 import java.sql.Connection;
@@ -18,15 +20,19 @@ public class GroupDao {
 
     public static List<Group> getAllGroupsDao() {
         List<Group> groups = new ArrayList<>();
-        Connection con = DatabaseUtil.getRemoteConnection();
         try {
+            Connection con = DatabaseUtil.getRemoteConnection();
             assert con != null;
             Statement state = con.createStatement();
-            String sql = "SELECT * FROM group";
+            String sql = "SELECT * FROM group1;";
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
                 groups.add(GroupHelper.createGroup(rs));
             }
+
+            rs.close();
+            state.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -35,42 +41,59 @@ public class GroupDao {
 
     public static List<Group> getAllGroupsInClassroomDao(int classroomId) {
         List<Group> groups = new ArrayList<>();
-        Connection con = DatabaseUtil.getRemoteConnection();
         try {
+            Connection con = DatabaseUtil.getRemoteConnection();
             assert con != null;
             Statement state = con.createStatement();
-            String sql = "SELECT * FROM group"
+            String sql = "SELECT * FROM group1"
                     + "WHERE classroom_id = " + classroomId;
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
                 groups.add(GroupHelper.createGroup(rs));
             }
+
+            rs.close();
+            state.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return groups;
     }
 
+    public static List<Group> getPartialGroupsByGroupType(GroupType groupType){
+        List<Group> groups = getAllGroupsDao();
+        groups.removeIf(group
+                -> StudentDao.getNumOfStudentsInGroup(group.getClassroomId(), group.getGroupId())
+                    >= groupType.getMaxStudentPerGroup());
+        return groups;
+    }
+
+    public static void clearAll(){
+        String sql = "delete from group1";
+        DatabaseUtil.executeSQL(sql);
+    }
+
     public static void addGroupDao(Group group) {
-        String sql = "INSERT into group (group_id, classroom_id, teacher_id) " +
-                "VALUES('" + group.getGroupId()
-                + "','" + group.getClassroomId()
-                + "','" + group.getTeacherId() + "');";
+        String sql = "INSERT into group1 (group_id, classroom_id, teacher_id) " +
+                "VALUES(" + group.getGroupId()
+                + ", " + group.getClassroomId()
+                + ", " + group.getTeacherId() + ");";
         DatabaseUtil.executeSQL(sql);
     }
 
     public static void updatedGroupDao(Group group) {
-        String sql = "UPDATE group SET "
-                + "group_id = " + group.getGroupId()
-                + ", classroom_id = " + group.getClassroomId()
-                + ", teacher_id = " + group.getTeacherId() + "');";
+        String sql = "UPDATE group1 SET "
+                + "teacher_id = " + group.getTeacherId()
+                + " WHERE group_id = " + group.getGroupId()
+                + " and classroom_id = " + group.getClassroomId();
         DatabaseUtil.executeSQL(sql);
     }
 
     public static void delGroupDao(Group group) {
-        String sql = "DELETE  FROM  group WHERE"
+        String sql = "DELETE  FROM  group1 WHERE"
                 + "group_id = " + group.getGroupId()
-                + "AND classroom_id = " + group.getClassroomId();
+                + " AND classroom_id = " + group.getClassroomId();
         DatabaseUtil.executeSQL(sql);
     }
 }
