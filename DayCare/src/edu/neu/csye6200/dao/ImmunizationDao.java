@@ -27,6 +27,8 @@ public class ImmunizationDao {
             while (rs.next()) {
                 immunizations.add(ImmunizationHelper.createImmunization(rs));
             }
+            state.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -45,6 +47,8 @@ public class ImmunizationDao {
             while (rs.next()) {
                 immunizations.add(ImmunizationHelper.createImmunization(rs));
             }
+            state.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
