@@ -2,6 +2,7 @@ package edu.neu.csye6200.dao;
 
 import edu.neu.csye6200.api.helper.StudentHelper;
 import edu.neu.csye6200.model.Student;
+import edu.neu.csye6200.utils.ConvertUtil;
 import edu.neu.csye6200.utils.DatabaseUtil;
 
 import java.sql.Connection;
@@ -28,6 +29,25 @@ public class StudentDao {
           return stu_size;
         }catch (SQLException e){
           e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public static int getNumOfStudentsInGroup(int classroomId, int groupId) {
+        Connection con = DatabaseUtil.getRemoteConnection();
+        try {
+            assert con != null;
+            Statement state = con.createStatement();
+            String sql = "SELECT COUNT(*) as num FROM student "
+                    + "WHERE classroom_id = " + classroomId
+                    + ", group_id = " + groupId;
+            ResultSet rs = state.executeQuery(sql);
+            if(rs.next()){
+                return rs.getInt("num");
+            }
+            //System.out.printf("There are %d student", stu_size);
+        }catch (SQLException e){
+            e.printStackTrace();
         }
         return 0;
     }
@@ -101,8 +121,8 @@ public class StudentDao {
             + "','" + student.getEmail()
             + "','" + student.getRegistrationDate()
             + "','" + student.getPhoneNum()
-            + "','" + IdToString(student.getClassroom_id())
-            + "','" + IdToString(student.getGroup_id())
+            + "','" + ConvertUtil.idToString(student.getClassroom_id())
+            + "','" + ConvertUtil.idToString(student.getGroup_id())
             + "','" + student.getRating() + "');";
         DatabaseUtil.executeSQL(sql);
     }
@@ -118,8 +138,8 @@ public class StudentDao {
             + ", email = " + student.getEmail()
             + ", reg_date = " + student.getRegistrationDate()
             + ", phone_no = " + student.getPhoneNum()
-            + ", classroom_id = " + IdToString(student.getClassroom_id())
-            + ", group_id = " + IdToString(student.getGroup_id())
+            + ", classroom_id = " + ConvertUtil.idToString(student.getClassroom_id())
+            + ", group_id = " + ConvertUtil.idToString(student.getGroup_id())
             + ", rating = " + student.getRating() + "');";
         DatabaseUtil.executeSQL(sql);
     }
@@ -133,13 +153,4 @@ public class StudentDao {
         DatabaseUtil.deleteRecord("student", "student_id",
             String.valueOf(studentId));
     }
-
-    static String IdToString(int id) {
-        if (id == -1) {
-            return "null";
-        } else {
-            return String.valueOf(id);
-        }
-    }
-
 }

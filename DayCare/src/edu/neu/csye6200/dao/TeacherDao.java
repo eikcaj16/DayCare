@@ -1,9 +1,8 @@
 package edu.neu.csye6200.dao;
 
-import edu.neu.csye6200.api.helper.StudentHelper;
 import edu.neu.csye6200.api.helper.TeacherHelper;
-import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Teacher;
+import edu.neu.csye6200.utils.ConvertUtil;
 import edu.neu.csye6200.utils.DatabaseUtil;
 
 import java.sql.Connection;
@@ -43,7 +42,7 @@ public class TeacherDao {
         try {
             assert con != null;
             Statement state = con.createStatement();
-            String sql = "SELECT * as num FROM teacher "
+            String sql = "SELECT * FROM teacher "
                 + "WHERE classroom_id = " + classroomId;
             ResultSet rs = state.executeQuery(sql);
             while(rs.next()){
@@ -62,7 +61,7 @@ public class TeacherDao {
         try {
             assert con != null;
             Statement state = con.createStatement();
-            String sql = "SELECT * as num FROM teacher "
+            String sql = "SELECT * FROM teacher "
                 + "WHERE classroom_id = " + classroomId
                 + ", group_id = " + groupId;
             ResultSet rs = state.executeQuery(sql);
@@ -81,8 +80,8 @@ public class TeacherDao {
             + "address, parent_name, phone_no, rating)"
             + "VALUES("
             +"','"+teacher.getTeacherId()
-            +"','"+IdToString(teacher.getClassroom_id())
-            +"','"+IdToString(teacher.getGroup_id())
+            +"','"+ ConvertUtil.idToString(teacher.getClassroom_id())
+            +"','"+ ConvertUtil.idToString(teacher.getGroup_id())
             +"','"+teacher.getFirstName()
             +"','"+teacher.getLastName()
             +"','"+teacher.getDateOfBirth()
@@ -103,8 +102,8 @@ public class TeacherDao {
             + ", date_of_birth = " + teacher.getDateOfBirth()
             + ", parent_name = " + teacher.getParentName()
             + ", phone_no = " + teacher.getPhoneNum()
-            + ", classroom_id = " + IdToString(teacher.getClassroom_id())
-            + ", group_id = " + IdToString(teacher.getGroup_id())
+            + ", classroom_id = " + ConvertUtil.idToString(teacher.getClassroom_id())
+            + ", group_id = " + ConvertUtil.idToString(teacher.getGroup_id())
             + ", rating = " + teacher.getRating() + "');";
         DatabaseUtil.executeSQL(sql);
     }
@@ -138,13 +137,7 @@ public class TeacherDao {
 
     }
 
-    static String IdToString(int id) {
-        if (id == -1) {
-            return "null";
-        } else {
-            return String.valueOf(id);
-        }
-    }
+
 //    public void addTeacher(Teacher teacher) {
 //        String sql = "INSERT into TEACHER (classroom_id, group_id, first_name, last_name, date_of_birth, address, email " +
 //                "parent_name, phone_no, rating) " +

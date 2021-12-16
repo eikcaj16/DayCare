@@ -2,6 +2,8 @@ package edu.neu.csye6200.dao;
 
 import edu.neu.csye6200.api.helper.GroupHelper;
 import edu.neu.csye6200.model.Group;
+import edu.neu.csye6200.model.enums.GroupType;
+import edu.neu.csye6200.model.enums.StatusType;
 import edu.neu.csye6200.utils.DatabaseUtil;
 
 import java.sql.Connection;
@@ -51,6 +53,15 @@ public class GroupDao {
         return groups;
     }
 
+    public static List<Group> getPartialGroupsByGroupType(GroupType groupType, StatusType statusType){
+        List<Group> groups = getAllGroupsDao();
+        groups.removeIf(group
+                -> StudentDao.getNumOfStudentsInGroup(group.getClassroomId(), group.getGroupId())
+                    >= groupType.getMaxStudentPerGroup());
+        return groups;
+    }
+
+
     public static void addGroupDao(Group group) {
         String sql = "INSERT into group (group_id, classroom_id, teacher_id) " +
                 "VALUES('" + group.getGroupId()
@@ -63,7 +74,7 @@ public class GroupDao {
         String sql = "UPDATE group SET "
                 + "group_id = " + group.getGroupId()
                 + ", classroom_id = " + group.getClassroomId()
-                + ", teacher_id = " + group.getTeacherId() + "');";
+                + ", teacher_id = " + group.getTeacherId() + ";";
         DatabaseUtil.executeSQL(sql);
     }
 
