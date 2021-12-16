@@ -118,11 +118,11 @@ public class ClassroomDao {
 
     public static void updateClassroomDao(Classroom classroom) {
         String sql = "UPDATE classroom SET " +
-                "classroom_type = " +classroom.getClassroomType().ordinal() +
+                "classroom_type = " + classroom.getClassroomType().ordinal() +
                 ", student_num = " + classroom.getNumOfStudent() +
                 ", teacher_num = " + classroom.getNumOfTeacher() +
                 ", group_num = " + classroom.getNumOfGroup() +
-                "WHERE classroom_id = " + classroom.getClassroomId();
+                " WHERE classroom_id = " + classroom.getClassroomId();
         DatabaseUtil.executeSQL(sql);
     }
 

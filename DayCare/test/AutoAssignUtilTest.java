@@ -5,7 +5,7 @@ public class AutoAssignUtilTest {
 
     @Test
     public void testAutoAssign(){
-        //AutoAssignUtil.groupingLogicForAllStudents();
+        AutoAssignUtil.groupingLogicForAllStudents();
         AutoAssignUtil.groupingLogicForAllTeachers();
     }
 }

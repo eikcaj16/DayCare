@@ -1,6 +1,7 @@
 package edu.neu.csye6200.dao;
 
 import edu.neu.csye6200.api.helper.GroupHelper;
+import edu.neu.csye6200.model.Classroom;
 import edu.neu.csye6200.model.Group;
 import edu.neu.csye6200.model.enums.GroupType;
 import edu.neu.csye6200.model.enums.StatusType;
@@ -63,9 +64,22 @@ public class GroupDao {
 
     public static List<Group> getPartialGroupsByGroupType(GroupType groupType){
         List<Group> groups = getAllGroupsDao();
-        groups.removeIf(group
-                -> StudentDao.getNumOfStudentsInGroup(group.getClassroomId(), group.getGroupId())
-                    >= groupType.getMaxStudentPerGroup());
+        int typeIndex = groupType.ordinal();
+
+        List<Group> toDrop = new ArrayList<>();
+        for(Group group: groups){
+            Classroom temp = ClassroomDao.getClassroomWithIdDao(group.getClassroomId());
+            if(temp == null || temp.getClassroomType().ordinal() != typeIndex){
+                toDrop.add(group);
+            }
+            else if(StudentDao.getNumOfStudentsInGroup(group.getClassroomId(), group.getGroupId())
+                    >= groupType.getMaxStudentPerGroup()){
+                toDrop.add(group);
+            }
+        }
+
+        groups.removeAll(toDrop);
+
         return groups;
     }
 

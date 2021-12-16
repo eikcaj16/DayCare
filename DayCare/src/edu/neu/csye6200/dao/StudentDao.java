@@ -44,7 +44,7 @@ public class StudentDao {
             Statement state = con.createStatement();
             String sql = "SELECT COUNT(*) as num FROM student "
                     + "WHERE classroom_id = " + classroomId
-                    + ", group_id = " + groupId;
+                    + " AND group_id = " + groupId;
             ResultSet rs = state.executeQuery(sql);
             if (rs.next()) {
                 return rs.getInt("num");
@@ -126,6 +126,12 @@ public class StudentDao {
             e.printStackTrace();
         }
         return students;
+    }
+
+    public static void clearClassroomAndGroup(){
+        String sql = "Update student SET " +
+                "classroom_id = null, group_id = null;";
+        DatabaseUtil.executeSQL(sql);
     }
 
     public static void addStudentDao(Student student) {

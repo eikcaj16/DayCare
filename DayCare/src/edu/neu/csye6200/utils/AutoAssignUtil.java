@@ -6,6 +6,7 @@ import edu.neu.csye6200.api.factory.ClassroomFactory;
 import edu.neu.csye6200.api.factory.GroupFactory;
 import edu.neu.csye6200.dao.ClassroomDao;
 import edu.neu.csye6200.dao.GroupDao;
+import edu.neu.csye6200.dao.StudentDao;
 import edu.neu.csye6200.model.*;
 import edu.neu.csye6200.model.enums.ClassroomType;
 import edu.neu.csye6200.model.enums.GroupType;
@@ -25,6 +26,7 @@ public class AutoAssignUtil {
     public static void groupingLogicForAllStudents() {
         List<Student> students = studentApi.getAllStudents();
 
+        StudentDao.clearClassroomAndGroup();
         GroupDao.clearAll();
         ClassroomDao.clearAll();
 
