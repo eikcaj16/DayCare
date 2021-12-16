@@ -70,6 +70,6 @@ public class ConvertUtil {
 //		int year = Integer.parseInt(date[0]);
 //		int month = Integer.parseInt(date[1]);
 		LocalDate now = LocalDate.now();
-		return 12 * (now.getYear() - year - 1) + (12 - now.getMonthValue()) + month;
+		return 12 * (now.getYear() - year - 1) + (12 - month) + now.getMonthValue();
 	}
 }

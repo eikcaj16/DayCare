@@ -13,7 +13,7 @@ public interface GroupApi {
 
     List<Group> getAllGroupsInClassroom(int classroomId);
 
-    List<Group> getPartialGroupsByGroupType(GroupType groupType, StatusType statusType);
+    List<Group> getPartialGroupsByGroupType(GroupType groupType);
 
     void addGroup(Group group);
 

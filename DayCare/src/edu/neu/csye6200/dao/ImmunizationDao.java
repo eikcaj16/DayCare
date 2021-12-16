@@ -18,8 +18,8 @@ public class ImmunizationDao {
 
     public static List<Immunization> getAllImmunizationDao() {
         List<Immunization> immunizations = new ArrayList<>();
-        Connection con = DatabaseUtil.getRemoteConnection();
         try {
+            Connection con = DatabaseUtil.getRemoteConnection();
             assert con != null;
             Statement state = con.createStatement();
             String sql = "SELECT * FROM immunization";
@@ -27,6 +27,10 @@ public class ImmunizationDao {
             while (rs.next()) {
                 immunizations.add(ImmunizationHelper.createImmunization(rs));
             }
+
+            rs.close();
+            state.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -35,8 +39,8 @@ public class ImmunizationDao {
 
     public static List<Immunization> getImmunizationByNameDao(String immName) {
         List<Immunization> immunizations = new ArrayList<>();
-        Connection con = DatabaseUtil.getRemoteConnection();
         try {
+            Connection con = DatabaseUtil.getRemoteConnection();
             assert con != null;
             Statement state = con.createStatement();
             String sql = "SELECT * FROM immunization"
@@ -45,6 +49,10 @@ public class ImmunizationDao {
             while (rs.next()) {
                 immunizations.add(ImmunizationHelper.createImmunization(rs));
             }
+
+            rs.close();
+            state.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -84,7 +92,7 @@ public class ImmunizationDao {
     }
 
     public static void deleteImmunizationDao(Immunization imm) {
-        String sql = "DELETE  FROM  group WHERE"
+        String sql = "DELETE  FROM  immunization WHERE"
                 + "imm_name = " + imm.getImmunizationName()
                 + "AND student_id = " + imm.getStudentId();
         DatabaseUtil.executeSQL(sql);

@@ -18,8 +18,8 @@ import java.util.List;
 public class ClassroomDao {
     public static List<Classroom> getAllClassroomsDao() {
         List<Classroom> classroom = new ArrayList<>();
-        Connection con = DatabaseUtil.getRemoteConnection();
         try {
+            Connection con = DatabaseUtil.getRemoteConnection();
             assert con != null;
             Statement state = con.createStatement();
             String sql = "SELECT * FROM classroom";
@@ -27,6 +27,10 @@ public class ClassroomDao {
             while (rs.next()) {
                 classroom.add(ClassroomHelper.createClassroom(rs));
             }
+
+            rs.close();
+            state.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,8 +40,9 @@ public class ClassroomDao {
     public static List<Classroom> getAllClassroomsWithTypeDao(ClassroomType classroomType){
         int type = classroomType.ordinal();
         List<Classroom> classroom = new ArrayList<>();
-        Connection con = DatabaseUtil.getRemoteConnection();
+
         try {
+            Connection con = DatabaseUtil.getRemoteConnection();
             assert con != null;
             Statement state = con.createStatement();
             String sql = "SELECT * FROM classroom WHERE classroom_type = " + type;
@@ -45,6 +50,10 @@ public class ClassroomDao {
             while (rs.next()) {
                 classroom.add(ClassroomHelper.createClassroom(rs));
             }
+
+            rs.close();
+            state.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -52,8 +61,8 @@ public class ClassroomDao {
     }
 
     public static Classroom getClassroomWithIdDao(int classroom_id) {
-        Connection con = DatabaseUtil.getRemoteConnection();
         try {
+            Connection con = DatabaseUtil.getRemoteConnection();
             assert con != null;
             Statement state = con.createStatement();
             String sql = "SELECT * FROM classroom WHERE classroom_id = " + classroom_id;
@@ -61,6 +70,10 @@ public class ClassroomDao {
             if (rs.next()) {
                 return ClassroomHelper.createClassroom(rs);
             }
+
+            rs.close();
+            state.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -68,9 +81,8 @@ public class ClassroomDao {
     }
 
     public static int getMaxClassroomIdDao(){
-        List<Classroom> classroom = new ArrayList<>();
-        Connection con = DatabaseUtil.getRemoteConnection();
         try {
+            Connection con = DatabaseUtil.getRemoteConnection();
             assert con != null;
             Statement state = con.createStatement();
             String sql = "SELECT MAX(classroom_id) as max_id FROM classroom";
@@ -78,15 +90,24 @@ public class ClassroomDao {
             if (rs.next()) {
                 return rs.getInt("max_id");
             }
+
+            rs.close();
+            state.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return 0;
     }
 
+    public static void clearAll(){
+        String sql = "delete from classroom";
+        DatabaseUtil.executeSQL(sql);
+    }
+
     public static void addClassroomDao(Classroom classroom) {
         String sql = "insert into classroom (classroom_id, classroom_type, " +
-                "student_num, teacher_num, group_num)" +
+                "student_num, teacher_num, group_num) " +
                 "values (" + classroom.getClassroomId() +
                 ", " + classroom.getClassroomType().ordinal() +
                 ", " + classroom.getNumOfStudent() +
@@ -96,12 +117,12 @@ public class ClassroomDao {
     }
 
     public static void updateClassroomDao(Classroom classroom) {
-        String sql = "UPDATE classroom SET" +
-                "classroom_id = " + classroom.getClassroomId() +
-                ", classroom_type = " +classroom.getClassroomType().ordinal() +
+        String sql = "UPDATE classroom SET " +
+                "classroom_type = " +classroom.getClassroomType().ordinal() +
                 ", student_num = " + classroom.getNumOfStudent() +
                 ", teacher_num = " + classroom.getNumOfTeacher() +
-                ", group_num = " + classroom.getNumOfGroup() + ";";
+                ", group_num = " + classroom.getNumOfGroup() +
+                "WHERE classroom_id = " + classroom.getClassroomId();
         DatabaseUtil.executeSQL(sql);
     }
 

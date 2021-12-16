@@ -13,13 +13,13 @@ public class ImmunizationHelper {
                 rs.getString("imm_name"),
                 stringToInt(rs.getString("student_id")),
                 stringToLong(rs.getString("dose_1_id")),
-                stringtoDate(rs.getString("dose_1_date")),
+                rs.getDate("dose_1_date").toLocalDate(),
                 stringToLong(rs.getString("dose_2_id")),
-                stringtoDate(rs.getString("dose_2_date")),
+                rs.getDate("dose_2_date").toLocalDate(),
                 stringToLong(rs.getString("dose_3_id")),
-                stringtoDate(rs.getString("dose_3_date")),
+                rs.getDate("dose_3_date").toLocalDate(),
                 stringToLong(rs.getString("dose_4_id")),
-                stringtoDate(rs.getString("dose_4_date")));
+                rs.getDate("dose_4_date").toLocalDate());
         return imm;
     }
 }

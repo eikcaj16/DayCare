@@ -24,8 +24,8 @@ public class ConcreteGroupApi implements GroupApi {
         return GroupDao.getAllGroupsInClassroomDao(classroomId);
     }
 
-    public List<Group> getPartialGroupsByGroupType(GroupType groupType, StatusType statusType) {
-        return GroupDao.getPartialGroupsByGroupType(groupType, statusType);
+    public List<Group> getPartialGroupsByGroupType(GroupType groupType) {
+        return GroupDao.getPartialGroupsByGroupType(groupType);
     }
 
     @Override

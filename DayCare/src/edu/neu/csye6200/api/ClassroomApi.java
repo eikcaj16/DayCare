@@ -10,7 +10,10 @@ public interface ClassroomApi {
 
     List<Classroom> getAllClassroomsWithType(ClassroomType classroomType);
 
+    List<Classroom> getPartialClassroomsByClassroomType(ClassroomType classroomType);
+
     Classroom getClassroomWithId(int classroom_id);
+
     int getMaxClassroomId();
 
     void addClassroom(Classroom classroom);
